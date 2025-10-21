@@ -32,7 +32,7 @@ const jobs = [
 
 export default function WorkTimeline(){
   return (
-    <section id="experience" className="py-24 scroll-mt-24">
+    <section id="experience" className="pt-16 pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold gradient-brand">工作经历</h2>
@@ -40,16 +40,16 @@ export default function WorkTimeline(){
         </div>
         <div className="mt-10 space-y-6">
           {jobs.map((j)=> (
-            <Card key={j.company} className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="flex items-start justify-between">
-                <div>
-                  <CardTitle>{j.company}</CardTitle>
-                  <CardDescription className="mt-1">{j.role}</CardDescription>
-                </div>
-                <span className="text-sm text-muted-foreground">{j.time}</span>
+            <Card key={j.company} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+              <CardHeader className="flex items-start justify-between pb-4">
+                 <div>
+                   <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">{j.company}</CardTitle>
+                   <CardDescription className="mt-1 text-lg text-gray-600 dark:text-gray-300">{j.role}</CardDescription>
+                 </div>
+                 <span className="text-gray-500 dark:text-gray-500">{j.time}</span>
               </CardHeader>
               <CardContent>
-                <ul className="list-disc pl-5 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                <ul className="list-disc pl-5 space-y-2 text-base leading-relaxed text-gray-600 dark:text-gray-300">
                   {j.points.map((p)=> (<li key={p}>{p}</li>))}
                 </ul>
               </CardContent>

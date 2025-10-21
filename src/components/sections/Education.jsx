@@ -11,7 +11,7 @@ const education = [
 
 export default function Education(){
   return (
-    <section id="education" className="py-24 scroll-mt-24">
+    <section id="education" className="pt-16 pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-3xl font-bold gradient-brand">教育背景</h2>
@@ -19,16 +19,16 @@ export default function Education(){
         </div>
         <div className="mt-10 space-y-6">
           {education.map((e)=> (
-            <Card key={e.school} className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader className="flex items-start justify-between">
+            <Card key={e.school} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+              <CardHeader className="flex items-start justify-between pb-4">
                 <div>
-                  <CardTitle>{e.school}</CardTitle>
-                  <CardDescription className="mt-1">{e.degree}</CardDescription>
+                  <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">{e.school}</CardTitle>
+                  <CardDescription className="mt-1 text-lg text-gray-600 dark:text-gray-300">{e.degree}</CardDescription>
                 </div>
-                <span className="text-sm text-muted-foreground">{e.time}</span>
+                <span className="text-gray-500 dark:text-gray-500">{e.time}</span>
               </CardHeader>
               <CardContent>
-                <p className="text-sm leading-relaxed text-muted-foreground">{e.desc}</p>
+                <p className="text-base leading-relaxed text-gray-600 dark:text-gray-300">{e.desc}</p>
               </CardContent>
             </Card>
           ))}

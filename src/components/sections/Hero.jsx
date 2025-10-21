@@ -16,11 +16,11 @@ export default function Hero() {
           </div>
           <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">{desc}</p>
           <div className="mt-8 flex gap-3">
-            <Button variant="gradient" className="group" onClick={()=>scrollTo('skills')}>
+            <Button variant="gradient" className="group transform transition-transform duration-300 hover:scale-105" onClick={()=>scrollTo('skills')}>
               <span>了解更多</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
-            <Button variant="outline" onClick={()=>scrollTo('contact')}>联系我</Button>
+            <Button variant="outline" className="transform transition-transform duration-300 hover:scale-105 hover:!bg-transparent" onClick={()=>scrollTo('contact')}>联系我</Button>
           </div>
         </div>
         <div className="flex justify-center md:justify-start">
