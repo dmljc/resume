@@ -43,18 +43,18 @@ const tagClass = (t) => {
 
 export default function CoreSkills(){
   return (
-    <section id="skills" className="pt-16 pb-24 scroll-mt-24">
+    <section id="skills" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold gradient-brand">核心技能</h2>
-          <p className="mt-4 text-lg text-gray-600 dark:text-gray-300">深厚的技术积累和全栈开发经验</p>
+          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">核心技能</h2>
+          <p className="mt-4 text-sm sm:text-lg text-gray-600 dark:text-gray-300">深厚的技术积累和全栈开发经验</p>
         </div>
-        <div className="mt-10 grid gap-8 md:grid-cols-3">
+        <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((s)=> (
             <Card key={s.title} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">{s.title}</CardTitle>
-                <CardDescription className="text-base text-gray-600 dark:text-gray-300 mb-4">{s.desc}</CardDescription>
+                <CardTitle className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-white">{s.title}</CardTitle>
+                <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">{s.desc}</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
                 {s.tags.map((t)=> (

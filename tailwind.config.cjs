@@ -13,6 +13,15 @@ module.exports = {
         "2xl": "1280px",
       },
     },
+    screens: {
+      xs: "360px",   // 小屏安卓、iPhone SE/8（常见最小有效宽度）
+      sm: "640px",   // 大部分手机横屏与小平板
+      md: "768px",   // 典型平板竖屏
+      lg: "1024px",  // 平板横屏/小型桌面
+      xl: "1280px",  // 常见桌面
+      "2xl": "1536px", // 大屏桌面
+      "3xl": "1920px", // 1080p 全高清桌面
+    },
     extend: {
       colors: {
         border: "hsl(var(--border))",

@@ -1,12 +1,13 @@
 import { Button } from "./ui/button.jsx";
 import { cn } from "../lib/utils";
 import * as React from "react";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Code2, Briefcase, BookOpen, Mail } from "lucide-react";
 
 const items = [
   { id: "home", label: "主页" },
-  { id: "skills", label: "个人技能" },
+  { id: "skills", label: "核心技能" },
   { id: "experience", label: "工作经历" },
+  { id: "education", label: "教育背景" },
   { id: "contact", label: "联系方式" },
 ];
 
@@ -62,6 +63,13 @@ export default function Navbar() {
         : "text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
     );
 
+  const mobileIconMap = {
+    skills: Code2,
+    experience: Briefcase,
+    education: BookOpen,
+    contact: Mail,
+  };
+
   return (
     <nav className={cn("sticky top-0 z-50 border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60")}> 
       <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between">
@@ -72,6 +80,38 @@ export default function Navbar() {
         >
           张芳朝
         </a>
+        <div className="flex md:hidden items-center gap-2 ml-auto">
+          {["skills","experience","education","contact"].map((id)=> {
+            const Icon = mobileIconMap[id];
+            return (
+              <Button
+                key={id}
+                variant="ghost"
+                size="sm"
+                aria-label={items.find((it)=>it.id===id)?.label}
+                title={items.find((it)=>it.id===id)?.label}
+                onClick={(e)=>{e.preventDefault();scrollTo(id)}}
+                className={cn(
+                  "rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700",
+                  active === id
+                    ? "text-white bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] shadow-sm border-transparent"
+                    : "text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
+                )}
+              >
+                <Icon size={22} strokeWidth={2} />
+              </Button>
+            );
+          })}
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label="切换主题"
+            onClick={toggleTheme}
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700"
+          >
+            {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
+          </Button>
+        </div>
         <div className="hidden md:flex items-center gap-6 ml-auto">
           {items.map((it)=> (
             <a
@@ -84,8 +124,14 @@ export default function Navbar() {
               {it.label}
             </a>
           ))}
-          <Button variant="ghost" size="sm" aria-label="切换主题" onClick={toggleTheme} className="rounded-full w-8 h-8 p-0">
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label="切换主题"
+            onClick={toggleTheme}
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700"
+          >
+            {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
           </Button>
         </div>
       </div>

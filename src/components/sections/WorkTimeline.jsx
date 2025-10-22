@@ -32,24 +32,26 @@ const jobs = [
 
 export default function WorkTimeline(){
   return (
-    <section id="experience" className="pt-16 pb-24 scroll-mt-24">
+    <section id="experience" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold gradient-brand">工作经历</h2>
-          <p className="mt-2 text-muted-foreground">我的职业发展历程</p>
+          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">工作经历</h2>
+          <p className="mt-2 text-sm sm:text-base text-muted-foreground">我的职业发展历程</p>
         </div>
-        <div className="mt-10 space-y-6">
+        <div className="mt-8 sm:mt-10 space-y-5 sm:space-y-6">
           {jobs.map((j)=> (
             <Card key={j.company} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
-              <CardHeader className="flex items-start justify-between pb-4">
-                 <div>
-                   <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">{j.company}</CardTitle>
-                   <CardDescription className="mt-1 text-lg text-gray-600 dark:text-gray-300">{j.role}</CardDescription>
-                 </div>
-                 <span className="text-gray-500 dark:text-gray-500">{j.time}</span>
+              <CardHeader className="pb-4">
+                <div className="w-full">
+                  <CardTitle className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white break-words">{j.company}</CardTitle>
+                  <div className="mt-1 flex items-center justify-between gap-2">
+                    <CardDescription className="text-base sm:text-lg text-gray-600 dark:text-gray-300 flex-1 min-w-0">{j.role}</CardDescription>
+                    <span className="text-sm sm:text-base whitespace-nowrap text-gray-500 dark:text-gray-500">{j.time}</span>
+                  </div>
+                </div>
               </CardHeader>
               <CardContent>
-                <ul className="list-disc pl-5 space-y-2 text-base leading-relaxed text-gray-600 dark:text-gray-300">
+                <ul className="list-disc pl-5 space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed sm:leading-7 marker:text-gray-400 break-words text-gray-600 dark:text-gray-300">
                   {j.points.map((p)=> (<li key={p}>{p}</li>))}
                 </ul>
               </CardContent>

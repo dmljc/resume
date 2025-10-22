@@ -27,34 +27,34 @@ const contacts = [
 
 export default function ContactGrid(){
   return (
-    <section id="contact" className="pt-16 pb-24 scroll-mt-24">
+    <section id="contact" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold gradient-brand">联系方式</h2>
-          <p className="mt-2 text-muted-foreground">通过以下方式与我取得联系，期待与您交流</p>
+          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">联系方式</h2>
+          <p className="mt-2 text-sm sm:text-base text-muted-foreground">通过以下方式与我取得联系，期待与您交流</p>
         </div>
-        <div className="mt-10 grid gap-8 md:grid-cols-3 items-stretch">
+        <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
           {contacts.map((c) => (
             <Card key={c.title} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700 h-full flex flex-col">
               <CardHeader className="pb-4 text-center">
                 <div className="flex justify-center">
-                  <div className="h-12 w-12 rounded-full border border-gray-100 dark:border-gray-700 flex items-center justify-center">
-                    <c.icon className="h-6 w-6 text-primary" />
+                  <div className="h-10 w-10 sm:h-12 sm:w-12 rounded-full border border-gray-100 dark:border-gray-700 flex items-center justify-center">
+                    <c.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
                 </div>
-                <CardTitle className="mt-3 text-xl font-semibold text-gray-900 dark:text-white">{c.title}</CardTitle>
+                <CardTitle className="mt-3 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">{c.title}</CardTitle>
                 {c.desc && !c.action && (
-                  <CardDescription className="mt-2 text-base text-gray-600 dark:text-gray-300">{c.desc}</CardDescription>
+                  <CardDescription className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-300">{c.desc}</CardDescription>
                 )}
               </CardHeader>
               {c.qrSrc ? (
                 <CardContent className="flex-1 flex items-center justify-center">
-                  <img src={c.qrSrc} alt="wechat qr" className="h-44 w-44 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm" />
+                  <img src={c.qrSrc} alt="wechat qr" className="h-40 w-40 sm:h-44 sm:w-44 rounded-lg border border-gray-100 dark:border-gray-700 shadow-sm" />
                 </CardContent>
               ) : (
                  <>
                    <CardContent className="flex-1">
-                     <div className="rounded-lg px-4 py-3 text-base text-gray-700 dark:text-gray-200 text-center font-mono tracking-wide">
+                     <div className="rounded-lg px-4 py-3 text-sm sm:text-base text-gray-700 dark:text-gray-200 text-center font-mono tracking-wide">
                        {c.desc}
                      </div>
                    </CardContent>

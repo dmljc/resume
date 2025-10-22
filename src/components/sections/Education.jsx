@@ -23,12 +23,12 @@ export default function Education(){
               <CardHeader className="flex items-start justify-between pb-4">
                 <div>
                   <CardTitle className="text-xl font-semibold text-gray-900 dark:text-white">{e.school}</CardTitle>
-                  <CardDescription className="mt-1 text-lg text-gray-600 dark:text-gray-300">{e.degree}</CardDescription>
+                  <CardDescription className="mt-1 text-base sm:text-lg text-gray-600 dark:text-gray-300">{e.degree}</CardDescription>
                 </div>
-                <span className="text-gray-500 dark:text-gray-500">{e.time}</span>
+                <span className="text-sm sm:text-base text-gray-500 dark:text-gray-500">{e.time}</span>
               </CardHeader>
               <CardContent>
-                <p className="text-base leading-relaxed text-gray-600 dark:text-gray-300">{e.desc}</p>
+                <p className="text-sm sm:text-base leading-relaxed sm:leading-7 break-words text-gray-600 dark:text-gray-300">{e.desc}</p>
               </CardContent>
             </Card>
           ))}
