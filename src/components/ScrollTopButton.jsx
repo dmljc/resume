@@ -22,10 +22,10 @@ export default function ScrollTopButton(){
   return (
     <div
       className={[
-        "fixed right-4 z-50 transition-opacity", // 固定在右下角并淡入淡出
+        "fixed right-8 z-50 transition-opacity", // right: 2rem
         visible ? "opacity-100" : "opacity-0 pointer-events-none",
       ].join(" ")}
-      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 1rem)" }}
+      style={{ bottom: "calc(env(safe-area-inset-bottom, 0px) + 1.5rem)" }}
     >
       <Button
         variant="ghost"
