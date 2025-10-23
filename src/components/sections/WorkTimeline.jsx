@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card.jsx";
+import { useI18n } from "../../lib/i18n-core.js";
 
 const jobs = [
   {
@@ -31,12 +32,13 @@ const jobs = [
 ];
 
 export default function WorkTimeline(){
+  const { t } = useI18n();
   return (
     <section id="experience" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">工作经历</h2>
-          <p className="mt-2 text-sm sm:text-base text-muted-foreground">我的职业发展历程</p>
+          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("experience.title")}</h2>
+          <p className="mt-2 text-sm sm:text-base text-muted-foreground">{t("experience.subtitle")}</p>
         </div>
         <div className="mt-8 sm:mt-10 space-y-5 sm:space-y-6">
           {jobs.map((j)=> (

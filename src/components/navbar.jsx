@@ -1,7 +1,8 @@
 import { Button } from "./ui/button.jsx";
 import { cn } from "../lib/utils";
 import * as React from "react";
-import { Sun, Moon, Code2, Briefcase, BookOpen, Mail } from "lucide-react";
+import { Sun, Moon, Code2, Briefcase, BookOpen, Mail, Languages } from "lucide-react";
+import { useI18n } from "../lib/i18n-core.js";
 
 const items = [
   { id: "home", label: "主页" },
@@ -19,6 +20,7 @@ export default function Navbar() {
     if (saved === "light") return false;
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+  const { t, toggleLang } = useI18n();
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -78,7 +80,7 @@ export default function Navbar() {
           onClick={(e)=>{e.preventDefault();scrollTo('home')}}
           className="font-semibold gradient-brand text-lg tracking-wide"
         >
-          张芳朝
+          {t("brand.name")}
         </a>
         <div className="flex md:hidden items-center gap-2 ml-auto">
           {["skills","experience","education","contact"].map((id)=> {
@@ -88,8 +90,8 @@ export default function Navbar() {
                 key={id}
                 variant="ghost"
                 size="sm"
-                aria-label={items.find((it)=>it.id===id)?.label}
-                title={items.find((it)=>it.id===id)?.label}
+                aria-label={t(`nav.${id}`)}
+                title={t(`nav.${id}`)}
                 onClick={(e)=>{e.preventDefault();scrollTo(id)}}
                 className={cn(
                   "rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700",
@@ -105,7 +107,16 @@ export default function Navbar() {
           <Button
             variant="ghost"
             size="sm"
-            aria-label="切换主题"
+            aria-label={t("nav.toggleLang")}
+            onClick={toggleLang}
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
+          >
+            <Languages size={22} strokeWidth={2} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t("nav.toggleTheme")}
             onClick={toggleTheme}
             className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
           >
@@ -121,13 +132,22 @@ export default function Navbar() {
               className={linkClass(it.id)}
               aria-current={active === it.id ? "page" : undefined}
             >
-              {it.label}
+              {t(`nav.${it.id}`)}
             </a>
           ))}
           <Button
             variant="ghost"
             size="sm"
-            aria-label="切换主题"
+            aria-label={t("nav.toggleLang")}
+            onClick={toggleLang}
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
+          >
+            <Languages size={22} strokeWidth={2} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t("nav.toggleTheme")}
             onClick={toggleTheme}
             className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
           >

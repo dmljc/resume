@@ -1,4 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card.jsx";
+import { useI18n } from "../../lib/i18n-core.js";
 
 const education = [
   {
@@ -10,12 +11,13 @@ const education = [
 ];
 
 export default function Education(){
+  const { t } = useI18n();
   return (
     <section id="education" className="pt-16 pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-3xl font-bold gradient-brand">教育背景</h2>
-          <p className="mt-2 text-muted-foreground">我的学历与专业背景</p>
+          <h2 className="text-3xl font-bold gradient-brand">{t("education.title")}</h2>
+          <p className="mt-2 text-muted-foreground">{t("education.subtitle")}</p>
         </div>
         <div className="mt-10 space-y-6">
           {education.map((e)=> (

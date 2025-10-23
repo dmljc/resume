@@ -1,8 +1,10 @@
 import { Button } from "../ui/button.jsx";
 import { ArrowRight } from "lucide-react";
+import { useI18n } from "../../lib/i18n-core.js";
 
 export default function Hero() {
-  const desc = "5年+前端开发经验，专注中后台系统与性能优化；熟悉 React/Vue、Node/Egg、uni-app 与微信小程序，具备数据可视化经验。";
+  const { t } = useI18n();
+  const desc = t("hero.desc");
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   return (
     <section id="home" className="relative overflow-hidden">
@@ -10,14 +12,14 @@ export default function Hero() {
       <div className="hero-grid-overlay" />
       <div className="container mx-auto max-w-7xl py-16 sm:py-20 md:py-28 lg:py-32 grid gap-8 sm:gap-10 lg:gap-12 items-center lg:grid-cols-2">
         <div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">你好，我是</h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">{t("hero.greeting")}</h1>
           <div className="mt-2">
-            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text">张芳朝</span>
+            <span className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text">{t("brand.name")}</span>
           </div>
           <p className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">{desc}</p>
           <div className="mt-8 flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
             <Button variant="gradient" className="group transform transition-transform duration-300 hover:scale-105" onClick={()=>scrollTo('skills')}>
-              <span>了解更多</span>
+              <span>{t("hero.learn")}</span>
               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Button>
             <Button
@@ -25,7 +27,7 @@ export default function Hero() {
               className="group transform transition-transform duration-300 hover:scale-105 hover:!bg-transparent border border-dashed border-[hsl(var(--grad-to))]"
               onClick={()=>scrollTo('contact')}
             >
-              联系我
+              {t("hero.contact")}
             </Button>
           </div>
         </div>

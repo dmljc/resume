@@ -1,21 +1,26 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card.jsx";
 import { Badge } from "../ui/badge.jsx";
+import { useI18n } from "../../lib/i18n-core.js";
 
 const skills = [
   {
-    title: "前端技术",
-    desc: "熟悉 React、Vue、Three 等前端技术，具备复杂交互与可视化经验。",
+    title: { zh: "前端技术", en: "Frontend" },
+    desc: { zh: "熟悉 React、Vue、Three 等前端技术，具备复杂交互与可视化经验。", en: "Proficient in React, Vue, and Three.js with complex interaction and visualization experience." },
     tags: ["React", "Vue", "Three"],
   },
   {
-    title: "后端技术",
-    desc: "掌握 Node、Nest 与 MySQL，具备服务端开发与数据存储经验。",
+    title: { zh: "后端技术", en: "Backend" },
+    desc: { zh: "掌握 Node、Nest 与 MySQL，具备服务端开发与数据存储经验。", en: "Solid with Node, Nest and MySQL; experienced in server-side development and data storage." },
     tags: ["Node", "Nest", "Mysql"],
   },
   {
-    title: "团队管理",
-    desc: "丰富的技术团队管理经验，善于规划技术方向和推动团队创新。",
-    tags: ["技术规划", "团队建设", "项目管理"],
+    title: { zh: "团队管理", en: "Team Leadership" },
+    desc: { zh: "丰富的技术团队管理经验，善于规划技术方向和推动团队创新。", en: "Rich experience in tech team management; planning tech directions and driving innovation." },
+    tags: [
+      { zh: "技术规划", en: "Tech Strategy" },
+      { zh: "团队建设", en: "Team Building" },
+      { zh: "项目管理", en: "Project Management" },
+    ],
   },
 ];
 
@@ -36,30 +41,36 @@ const tagClass = (t) => {
     技术规划: "bg-gradient-to-r from-teal-500 to-green-500",
     团队建设: "bg-gradient-to-r from-orange-500 to-amber-500",
     项目管理: "bg-gradient-to-r from-rose-500 to-pink-500",
+    "Tech Strategy": "bg-gradient-to-r from-teal-500 to-green-500",
+    "Team Building": "bg-gradient-to-r from-orange-500 to-amber-500",
+    "Project Management": "bg-gradient-to-r from-rose-500 to-pink-500",
   };
   const fallbackBg = "bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))]";
   return `${common} ${bg[t] ?? fallbackBg}`;
 };
 
 export default function CoreSkills(){
+  const { t, lang } = useI18n();
   return (
     <section id="skills" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
-          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">核心技能</h2>
-          <p className="mt-4 text-sm sm:text-lg text-gray-600 dark:text-gray-300">深厚的技术积累和全栈开发经验</p>
+          <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("skills.title")}</h2>
+          <p className="mt-4 text-sm sm:text-lg text-gray-600 dark:text-gray-300">{t("skills.subtitle")}</p>
         </div>
         <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((s)=> (
-            <Card key={s.title} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
+            <Card key={s.title.zh} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
               <CardHeader>
-                <CardTitle className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-white">{s.title}</CardTitle>
-                <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">{s.desc}</CardDescription>
+                <CardTitle className="text-lg sm:text-xl font-semibold mb-4 text-gray-900 dark:text-white">{s.title[lang]}</CardTitle>
+                <CardDescription className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4">{s.desc[lang]}</CardDescription>
               </CardHeader>
               <CardContent className="flex flex-wrap gap-2">
-                {s.tags.map((t)=> (
-                  <Badge key={t} className={tagClass(t)}>{t}</Badge>
-                ))}
+                {s.tags.map((tag)=> {
+                  const label = typeof tag === "string" ? tag : tag[lang];
+                  const key = typeof tag === "string" ? tag : tag.zh;
+                  return <Badge key={key} className={tagClass(label)}>{label}</Badge>;
+                })}
               </CardContent>
             </Card>
           ))}
