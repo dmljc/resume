@@ -107,7 +107,7 @@ export default function Navbar() {
             size="sm"
             aria-label="切换主题"
             onClick={toggleTheme}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700"
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
           >
             {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
           </Button>
@@ -129,7 +129,7 @@ export default function Navbar() {
             size="sm"
             aria-label="切换主题"
             onClick={toggleTheme}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700"
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
           >
             {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
           </Button>

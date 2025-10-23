@@ -51,7 +51,7 @@ export default function WorkTimeline(){
                 </div>
               </CardHeader>
               <CardContent>
-                <ul className="list-disc pl-5 space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed sm:leading-7 marker:text-gray-400 break-words text-gray-600 dark:text-gray-300">
+                <ul className="list-disc pl-4 space-y-1.5 sm:space-y-2 text-sm sm:text-base leading-relaxed sm:leading-7 marker:text-gray-400 break-words text-gray-600 dark:text-gray-300">
                   {j.points.map((p)=> (<li key={p}>{p}</li>))}
                 </ul>
               </CardContent>
