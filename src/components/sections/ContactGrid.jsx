@@ -45,9 +45,6 @@ export default function ContactGrid(){
                   </div>
                 </div>
                 <CardTitle className="mt-3 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">{c.title[lang]}</CardTitle>
-                {c.desc && (
-                  <CardDescription className="mt-2 text-sm sm:text-base text-gray-600 dark:text-gray-300">{c.desc}</CardDescription>
-                )}
               </CardHeader>
               <CardContent className="flex-1">
                 <div className="rounded-lg px-4 py-3 text-sm sm:text-base text-gray-700 dark:text-gray-200 text-center font-mono tracking-wide">
