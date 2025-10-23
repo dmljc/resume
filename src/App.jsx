@@ -4,6 +4,7 @@ import CoreSkills from "./components/sections/CoreSkills.jsx";
 import WorkTimeline from "./components/sections/WorkTimeline.jsx";
 import Education from "./components/sections/Education.jsx";
 import ContactGrid from "./components/sections/ContactGrid.jsx";
+import ScrollTopButton from "./components/ScrollTopButton.jsx";
 
 export default function App(){
   return (
@@ -27,6 +28,7 @@ export default function App(){
         </section>
       </main>
       <footer className="border-t py-6 text-center text-sm text-muted-foreground">© {new Date().getFullYear()} Zhang Fangchao</footer>
+      <ScrollTopButton />
     </div>
   );
 }
