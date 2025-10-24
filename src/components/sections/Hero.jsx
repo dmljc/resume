@@ -16,7 +16,7 @@ export default function Hero() {
           <div className="mt-2">
             <span className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text">{t("brand.name")}</span>
           </div>
-          <p className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl">{desc}</p>
+          <p className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl whitespace-pre-line">{desc}</p>
           <div className="mt-8 flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
             <Button variant="gradient" className="group transform transition-transform duration-300 hover:scale-105" onClick={()=>scrollTo('skills')}>
               <span>{t("hero.learn")}</span>

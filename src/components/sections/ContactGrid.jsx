@@ -9,7 +9,7 @@ const contacts = [
   {
     icon: Phone,
     title: { zh: "电话", en: "Phone" },
-    desc: "176-0214-3402",
+    desc: "156-5718-9067",
     actionKey: "phone",
   },
   {
@@ -58,7 +58,7 @@ export default function ContactGrid(){
                   onClick={async () => {
                     try {
                       await navigator.clipboard?.writeText?.(c.desc);
-                      showMessage(`${t("contact.copy.prefix")}${t(`contact.copy.${c.actionKey}`)}${t("contact.copy.suffix")}`, 2000, { anchorSelector: "#contact", offsetRem: 2 });
+                      showMessage(`${t(`contact.copy.${c.actionKey}`)}${t("contact.copy.suffix")}`, 2000, { anchorSelector: "#contact", offsetRem: 2 });
                     } catch {
                       showMessage(t("contact.copy.fail"), 2000, { anchorSelector: "#contact", offsetRem: 2 });
                     }

@@ -5,13 +5,13 @@ import { useI18n } from "../../lib/i18n-core.js";
 const skills = [
   {
     title: { zh: "前端技术", en: "Frontend" },
-    desc: { zh: "熟悉 React、Vue、Three 等前端技术，具备复杂交互与可视化经验。", en: "Proficient in React, Vue, and Three.js with complex interaction and visualization experience." },
-    tags: ["React", "Vue", "Three"],
+    desc: { zh: "熟练掌握 React、Vue、Three.js、ES6+、TypeScript、微信小程序 等现代技术栈。", en: "Proficient in React, Vue, and Three.js with complex interaction and visualization experience." },
+    tags: ["React", "Vue", "Three.js", "微信小程序"],
   },
   {
     title: { zh: "后端技术", en: "Backend" },
-    desc: { zh: "掌握 Node、Nest 与 MySQL，具备服务端开发与数据存储经验。", en: "Solid with Node, Nest and MySQL; experienced in server-side development and data storage." },
-    tags: ["Node", "Nest", "Mysql"],
+    desc: { zh: "掌握 Nest.js、Node.js、MySQL 等后端技术，具备服务端开发与数据存储经验。", en: "Solid with Node, Nest and MySQL; experienced in server-side development and data storage." },
+    tags: ["Nest.js", "Node.js", "Mysql"],
   },
   {
     title: { zh: "团队管理", en: "Team Leadership" },
