@@ -2,6 +2,7 @@ import * as React from "react";
 
 export const dict = {
   "brand.name": { zh: "张芳朝", en: "ZhangFangChao" },
+  "site.title": { zh: "张芳朝 — 前端开发", en: "ZhangFangChao — Frontend Developer" },
   "nav.home": { zh: "主页", en: "Home" },
   "nav.skills": { zh: "核心技能", en: "Skills" },
   "nav.experience": { zh: "工作经历", en: "Experience" },

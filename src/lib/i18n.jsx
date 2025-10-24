@@ -17,9 +17,19 @@ export function I18nProvider({ children }) {
     return entry[lang] ?? entry.zh;
   }, [lang]);
 
+  React.useLayoutEffect(() => {
+    // Update browser tab title on language change without visual delay
+    document.title = t("site.title");
+  }, [lang, t]);
+
   const toggleLang = React.useCallback(() => {
-    setLang((v) => (v === "zh" ? "en" : "zh"));
-  }, []);
+    const nextLang = lang === "zh" ? "en" : "zh";
+    // Immediately update title and html lang to avoid visible delay
+    document.title = dict["site.title"]?.[nextLang] ?? dict["site.title"].zh;
+    document.documentElement.lang = nextLang === "zh" ? "zh-CN" : "en";
+    localStorage.setItem("lang", nextLang);
+    setLang(nextLang);
+  }, [lang]);
 
   return (
     <I18nContext.Provider value={{ lang, setLang, toggleLang, t }}>
