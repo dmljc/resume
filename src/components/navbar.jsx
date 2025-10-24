@@ -82,7 +82,8 @@ export default function Navbar() {
         >
           {t("brand.name")}
         </a>
-        <div className="flex md:hidden items-center gap-2 ml-auto">
+        {/* Mobile vertical nav icons: left-centered, vertical stack */}
+        <div className="md:hidden fixed left-5 top-[calc(50svh+80px)] -translate-y-1/2 flex flex-col items-center gap-4 z-50">
           {["skills","experience","education","contact"].map((id)=> {
             const Icon = mobileIconMap[id];
             return (
@@ -94,7 +95,7 @@ export default function Navbar() {
                 title={t(`nav.${id}`)}
                 onClick={(e)=>{e.preventDefault();scrollTo(id)}}
                 className={cn(
-                  "rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700",
+                  "rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700",
                   active === id
                     ? "text-white bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] shadow-sm border-transparent"
                     : "text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
@@ -104,24 +105,6 @@ export default function Navbar() {
               </Button>
             );
           })}
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-label={t("nav.toggleLang")}
-            onClick={toggleLang}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
-          >
-            <Languages size={22} strokeWidth={2} />
-          </Button>
-          <Button
-            variant="ghost"
-            size="sm"
-            aria-label={t("nav.toggleTheme")}
-            onClick={toggleTheme}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
-          >
-            {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
-          </Button>
         </div>
         <div className="hidden md:flex items-center gap-6 ml-auto">
           {items.map((it)=> (
