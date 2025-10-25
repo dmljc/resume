@@ -21,12 +21,38 @@ export default function Navbar() {
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
   const { t, toggleLang } = useI18n();
+  const [mobileAnchorTop, setMobileAnchorTop] = React.useState('calc(50svh + 80px)');
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
     setActive(id);
   };
+
+  React.useEffect(() => {
+    const compute = () => {
+      const avatarEl = document.getElementById('hero-avatar');
+      if (!avatarEl) { setMobileAnchorTop('calc(50svh + 80px)'); return; }
+      const rect = avatarEl.getBoundingClientRect();
+      const topPx = rect.top + rect.height / 2; // 头像中心
+      setMobileAnchorTop(`${topPx}px`);
+    };
+    compute();
+    const onResize = () => compute();
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('orientationchange', onResize);
+    let ro;
+    const avatarEl = document.getElementById('hero-avatar');
+    if (avatarEl && 'ResizeObserver' in window) {
+      ro = new ResizeObserver(() => compute());
+      ro.observe(avatarEl);
+    }
+    return () => {
+      window.removeEventListener('resize', onResize);
+      window.removeEventListener('orientationchange', onResize);
+      if (ro) ro.disconnect();
+    };
+  }, []);
 
   React.useEffect(() => {
     const observer = new IntersectionObserver(
@@ -104,8 +130,13 @@ export default function Navbar() {
           </Button>
         </div>
         {/* Mobile vertical nav icons: left-centered, vertical stack */}
-        <div className="md:hidden fixed left-5 top-[calc(50svh+80px)] -translate-y-1/2 flex flex-col items-center gap-4 z-50">
-          {["skills","experience","education","contact"].map((id)=> {
+        <div className="md:hidden fixed left-5 -translate-y-1/2 flex flex-col items-center gap-4 z-50" style={{ top: mobileAnchorTop }}>
+          {[
+            "skills",
+            "experience",
+            "education",
+            "contact"
+          ].map((id) => {
             const Icon = mobileIconMap[id];
             return (
               <Button
@@ -114,7 +145,10 @@ export default function Navbar() {
                 size="sm"
                 aria-label={t(`nav.${id}`)}
                 title={t(`nav.${id}`)}
-                onClick={(e)=>{e.preventDefault();scrollTo(id)}}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(id);
+                }}
                 className={cn(
                   "rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700",
                   active === id
