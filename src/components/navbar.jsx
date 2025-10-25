@@ -82,6 +82,27 @@ export default function Navbar() {
         >
           {t("brand.name")}
         </a>
+        {/* Mobile toggles: language & theme */}
+        <div className="md:hidden flex items-center gap-3 ml-auto">
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t("nav.toggleLang")}
+            onClick={toggleLang}
+            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100 shadow-sm"
+          >
+            <Languages size={22} strokeWidth={2} />
+          </Button>
+          <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t("nav.toggleTheme")}
+            onClick={toggleTheme}
+            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100 shadow-sm"
+          >
+            {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
+          </Button>
+        </div>
         {/* Mobile vertical nav icons: left-centered, vertical stack */}
         <div className="md:hidden fixed left-5 top-[calc(50svh+80px)] -translate-y-1/2 flex flex-col items-center gap-4 z-50">
           {["skills","experience","education","contact"].map((id)=> {
