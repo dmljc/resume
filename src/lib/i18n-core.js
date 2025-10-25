@@ -15,8 +15,8 @@ export const dict = {
   "hero.learn": { zh: "了解更多", en: "Learn More" },
   "hero.contact": { zh: "联系我", en: "Contact Me" },
   "hero.desc": {
-    zh: "9 年前端开发经验（含 4 年团队管理经验)\n擅长中后台开发、重构、性能优化\n熟练掌握 React、Vue、TypeScript、ES6+\n具备 Three.js 三维开发、Nest.js 全栈开发、微信小程序开发经验",
-    en: "9+ years of frontend experience (including 4 years of team leadership)\nSkilled in admin systems, refactoring, and performance optimization\nProficient in React, Vue, TypeScript, ES6+\nExperienced with Three.js (3D), Nest.js (full‑stack), and WeChat Mini Programs",
+    zh: "【专业经验】：9 年前端开发、4 年团队管理\n【技术栈】：React、Vue、TypeScript、ES6+\n【特色领域】：Three.js 三维可视化、Nest.js 全栈架构、微信小程序\n【亮点】：首屏性能 10s → 2.5s、三维标注项目落地、主导中后台重构",
+    en: "Experience: 9 years frontend · 4 years team leadership\nStack: React · Vue · TypeScript · ES6+ · Full‑stack practice\nFocus: Three.js visualization · Nest.js architecture · WeChat Mini Programs\nHighlights: First‑screen 10s → 2.5s · 3D labeling project delivered · Led admin refactor",
   },
 
   "skills.title": { zh: "核心技能", en: "Core Skills" },

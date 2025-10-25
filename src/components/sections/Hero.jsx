@@ -10,13 +10,13 @@ export default function Hero() {
     <section id="home" className="relative overflow-hidden">
       {/* 背景栅格质感覆盖 */}
       <div className="hero-grid-overlay" />
-      <div className="container mx-auto max-w-7xl py-16 sm:py-20 md:py-28 lg:py-32 grid gap-8 sm:gap-10 lg:gap-12 items-center lg:grid-cols-2">
+      <div className="container mx-auto max-w-7xl py-16 sm:py-20 md:py-28 lg:py-32 grid gap-8 sm:gap-10 lg:gap-12 items-center lg:grid-cols-[2fr_1fr]">
         <div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">{t("hero.greeting")}</h1>
           <div className="mt-2">
             <span className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text">{t("brand.name")}</span>
           </div>
-          <p className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl whitespace-pre-line">{desc}</p>
+          <p className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl lg:max-w-none whitespace-pre-line">{desc}</p>
           <div className="mt-8 flex flex-wrap justify-center sm:justify-start gap-3 sm:gap-4">
             <Button variant="gradient" className="group transform transition-transform duration-300 hover:scale-105" onClick={()=>scrollTo('skills')}>
               <span>{t("hero.learn")}</span>
