@@ -16,16 +16,16 @@ export default function Hero() {
           <div className="mt-2">
             <span className="text-4xl sm:text-5xl lg:text-6xl font-bold gradient-text">{t("brand.name")}</span>
           </div>
-          <div className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl lg:max-w-none [--label-w:clamp(6.5rem,14vw,9.2rem)] md:[--label-w:clamp(7.4rem,12vw,9.6rem)] lg:[--label-w:clamp(8.4rem,10vw,10.4rem)]">
+          <div className="mt-5 text-base sm:text-lg lg:text-xl text-gray-600 dark:text-gray-300 leading-relaxed max-w-2xl lg:max-w-none">
             {desc.split("\n").map((line, idx) => {
               let m;
               if (lang === "zh") {
                 m = line.match(/^【([^】]+)】：\s*(.*)$/);
                 if (m) {
                   return (
-                    <div key={idx} className="grid grid-cols-[var(--label-w),1fr]"> 
-                      <span className="w-full">{'【' + m[1] + '】：'}</span>
-                      <span className="break-words min-w-0">{m[2]}</span>
+                    <div key={idx} className="flex flex-wrap items-baseline">
+                      <span className="shrink-0 whitespace-nowrap">{'【' + m[1] + '】：'}</span>
+                      <span className="break-words min-w-0 flex-1">{m[2]}</span>
                     </div>
                   );
                 }
@@ -33,9 +33,9 @@ export default function Hero() {
               m = line.match(/^([^:]+):\s*(.*)$/);
               if (m) {
                 return (
-                  <div key={idx} className="grid grid-cols-[var(--label-w),1fr]"> 
-                    <span className="w-full">{m[1] + ':'}</span>
-                    <span className="break-words min-w-0">{m[2]}</span>
+                  <div key={idx} className="flex flex-wrap items-baseline">
+                    <span className="shrink-0 whitespace-nowrap">{m[1] + ':'}</span>
+                    <span className="break-words min-w-0 flex-1">{m[2]}</span>
                   </div>
                 );
               }
