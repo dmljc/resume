@@ -84,6 +84,59 @@
   --ring: 210 100% 66%;
 }
 
+/* 打印样式，确保所见即所得 */
+@media print {
+  /* 保留颜色与背景 */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important; /* 移除所有阴影 */
+    border: none !important; /* 移除所有边框 */
+  }
+
+  /* 统一纸张与页边距（A4） */
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  /* 打印主区域：强制 A4 宽度，不再跟随 max-w-6xl */
+  .print-area {
+    max-width: none !important;
+  }
+
+  /* 强制两栏 Flex 布局 */
+  .print-area > div {
+    display: flex !important;
+    gap: 0 !important;
+  }
+
+  /* 左侧栏 */
+  .print-area > div > div:first-child {
+    width: 33.3333% !important;
+    padding-right: 1rem !important;
+    padding-left: 0 !important;
+  }
+
+  /* 右侧栏 */
+  .print-area > div > div:last-child {
+    width: 66.6667% !important;
+    padding-left: 1rem !important;
+    padding-right: 0 !important;
+  }
+
+  /* 确保卡片在打印时正确显示 */
+  .print-area .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* 仅交互元素在打印时隐藏（下载、打印按钮等） */
+  .print-hidden {
+    display: none !important;
+  }
+}
+
 html, body, #root { height: 100%; }
 body {
   @apply bg-background text-foreground antialiased;

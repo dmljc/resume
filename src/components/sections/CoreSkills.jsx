@@ -5,7 +5,7 @@ import { useI18n } from "../../lib/i18n-core.js";
 const skills = [
   {
     title: { zh: "前端技术", en: "Frontend" },
-    desc: { zh: "熟练掌握 React、Vue、Three.js、ES6+、TypeScript、微信小程序 等现代技术栈。", en: "Proficient in React, Vue, and Three.js with complex interaction and visualization experience." },
+    desc: { zh: "熟练掌握 React、Vue、Three.js、ES6+、TypeScript、微信小程序、AI 辅助编程 等。", en: "Proficient in React, Vue, and Three.js with complex interaction and visualization experience." },
     tags: ["React", "Vue", "Three.js", "微信小程序"],
   },
   {

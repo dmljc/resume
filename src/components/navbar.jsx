@@ -10,6 +10,7 @@ const items = [
   { id: "experience", label: "工作经历" },
   { id: "education", label: "教育背景" },
   { id: "contact", label: "联系方式" },
+  { id: "resume", label: "在线简历" },
 ];
 
 export default function Navbar() {
@@ -73,13 +74,13 @@ export default function Navbar() {
   }, []);
 
   React.useEffect(() => {
-    const root = document.documentElement;
-    if (isDark) root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", isDark ? "#0b1220" : "#ffffff");
-  }, [isDark]);
+  const root = document.documentElement;
+  if (isDark) root.classList.add("dark");
+  else root.classList.remove("dark");
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.setAttribute("content", isDark ? "#0b1220" : "#ffffff");
+}, [isDark]);
 
   const toggleTheme = () => setIsDark((v) => !v);
 
@@ -162,17 +163,26 @@ export default function Navbar() {
           })}
         </div>
         <div className="hidden md:flex items-center gap-6 ml-auto">
-          {items.map((it)=> (
-            <a
-              key={it.id}
-              href={`#${it.id}`}
-              onClick={(e)=>{e.preventDefault();scrollTo(it.id)}}
-              className={linkClass(it.id)}
-              aria-current={active === it.id ? "page" : undefined}
-            >
-              {t(`nav.${it.id}`)}
-            </a>
-          ))}
+        {items.map((it)=> (
+          <a
+            key={it.id}
+            href={it.id === 'resume' ? '/resume' : `#${it.id}`}
+            onClick={(e)=>{
+              if (it.id === 'resume') {
+                // 在新标签页打开在线简历
+                e.preventDefault();
+                window.open('/resume', '_blank');
+                return;
+              }
+              e.preventDefault();
+              scrollTo(it.id)
+            }}
+            className={linkClass(it.id)}
+            aria-current={active === it.id ? "page" : undefined}
+          >
+            {it.id === 'resume' ? t('nav.resume') : t(`nav.${it.id}`)}
+          </a>
+        ))}
           <Button
             variant="ghost"
             size="sm"

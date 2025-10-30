@@ -8,6 +8,7 @@ export const dict = {
   "nav.experience": { zh: "工作经历", en: "Experience" },
   "nav.education": { zh: "教育背景", en: "Education" },
   "nav.contact": { zh: "联系方式", en: "Contact" },
+  "nav.resume": { zh: "在线简历", en: "Resume" },
   "nav.toggleTheme": { zh: "切换主题", en: "Toggle Theme" },
   "nav.toggleLang": { zh: "切换语言", en: "Toggle Language" },
 
@@ -15,7 +16,7 @@ export const dict = {
   "hero.learn": { zh: "了解更多", en: "Learn More" },
   "hero.contact": { zh: "联系我", en: "Contact Me" },
   "hero.desc": {
-    zh: "【专业经验】：9 年前端开发、4 年团队管理\n【技术体系】：React、Vue、TypeScript、ES6+、全栈实践\n【特色领域】：Three.js 三维可视化、Nest.js 全栈架构、微信小程序\n【项目亮点】：首屏性能 10s → 2.5s、三维标注项目落地、主导中后台重构",
+    zh: "【专业经验】：9 年前端开发、4 年团队管理\n【技术体系】：React、Vue、TypeScript、ES6+ \n【特色领域】：Three.js 三维可视化、Nest.js 全栈应用、微信小程序\n【项目亮点】：三维标注项目落地、性能优化、中后台项目重构落地",
     en: "Experience: 9 years frontend · 4 years team leadership\nStack: React · Vue · TypeScript · ES6+ · Full‑stack practice\nFocus: Three.js visualization · Nest.js architecture · WeChat Mini Programs\nHighlights: First‑screen 10s → 2.5s · 3D labeling project delivered · Led admin refactor",
   },
 

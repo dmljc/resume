@@ -11,7 +11,7 @@ const jobs = [
         "负责三维工井标注项目的探索与落地；",
         "技术栈 Three.js、Vue3、TypeScript、Vite、ES6+ 等；",
         "三维项目需求分析、架构设计、性能优化，相关通用能力沉淀；",
-        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "牵头三维技术方向团队能力建设，​​内部技术文档沉淀；​",
       ],
       en: [
         "Led exploration and delivery of the 3D well‑labeling project;",
@@ -29,7 +29,7 @@ const jobs = [
       zh: [
         "展会工作台 首屏性能优化从约 10s 优化至约 2.5s；",
         "技术栈 React、TypeScript、Webpack、ES6+ ；",
-        "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+        "主导4人规模前端小组常研发与协作管理，制定技术规范；",
       ],
       en: [
         "Optimized workbench first‑screen performance from ~10s to ~2.5s;",
@@ -61,8 +61,8 @@ const jobs = [
     time: { zh: "2017.03 - 2020.02", en: "Mar 2017 — Feb 2020" },
     points: {
       zh: [
-        "客服工作平台项目的开发与维护，负责用户端与客服端的交互与功能实；",
-        "技术栈 Vue2 全家桶、JavaScript、ES6、Element UI ；",
+        "客服工作平台项目的开发与维护；",
+        "技术栈 Vue2 全家桶、Element UI、Git ；",
         "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
       ],
       en: [
