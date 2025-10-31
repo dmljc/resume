@@ -41,7 +41,7 @@ export default function ResumeClone() {
           <p className="mt-2 text-sm text-gray-500">前端开发 | 9年经验</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 print-columns">
           <div className="space-y-8">
             <Card className="bg-white shadow-lg border border-gray-100 rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-2 pt-5">

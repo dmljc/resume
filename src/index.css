@@ -105,21 +105,21 @@
     max-width: none !important;
   }
 
-  /* 强制两栏 Flex 布局 */
-  .print-area > div {
+  /* 强制两栏 Flex 布局（仅作用两栏容器） */
+  .print-area .print-columns {
     display: flex !important;
     gap: 0 !important;
   }
 
   /* 左侧栏 */
-  .print-area > div > div:first-child {
+  .print-area .print-columns > div:first-child {
     width: 33.3333% !important;
     padding-right: 1rem !important;
     padding-left: 0 !important;
   }
 
   /* 右侧栏 */
-  .print-area > div > div:last-child {
+  .print-area .print-columns > div:last-child {
     width: 66.6667% !important;
     padding-left: 1rem !important;
     padding-right: 0 !important;
