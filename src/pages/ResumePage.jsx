@@ -1,16 +1,13 @@
 import * as React from 'react'
-import { I18nProvider } from '../lib/i18n.jsx'
 import ResumeClone from '../components/sections/ResumeClone.jsx'
 
 export default function ResumePage() {
-  React.useEffect(() => {
-    document.title = '个人简历'
-  }, [])
   return (
-    <I18nProvider>
-      <main className="min-h-screen bg-white dark:bg-slate-900">
+    <div>
+      <main className="min-h-screen pt-16">
         <ResumeClone />
       </main>
-    </I18nProvider>
+      <footer className="border-t py-6 text-center text-sm text-muted-foreground">© {new Date().getFullYear()} Zhang Fangchao</footer>
+    </div>
   )
 }

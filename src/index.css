@@ -147,6 +147,14 @@ body {
   background-repeat: no-repeat;
 }
 
+/* 全局平滑滚动与固定头部偏移 */
+html {
+  scroll-behavior: smooth;
+}
+section {
+  scroll-margin-top: 80px; /* 与导航高度匹配，避免遮挡 */
+}
+
 /* 品牌文字渐变，与导航选中态背景渐变一致 */
 .gradient-brand {
   background: linear-gradient(90deg, hsl(var(--grad-from)), hsl(var(--grad-to)));

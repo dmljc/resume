@@ -12,6 +12,25 @@ export const dict = {
   "nav.toggleTheme": { zh: "切换主题", en: "Toggle Theme" },
   "nav.toggleLang": { zh: "切换语言", en: "Toggle Language" },
 
+  // Resume page common actions
+  "resume.download": { zh: "下载简历", en: "Download Resume" },
+  "resume.print": { zh: "打印简历", en: "Print Resume" },
+  // Common profile subtitle shown on both pages
+  "profile.subtitle": { zh: "前端开发 | 9年经验", en: "Frontend Developer | 9 Years Experience" },
+
+  // Experience section
+
+  // Shared advantage section (used in hero and resume page)
+  "advantages.title": { zh: "个人优势", en: "Highlights" },
+  "advantages.label.experience": { zh: "【专业经验】", en: "[Experience]" },
+  "advantages.label.stack": { zh: "【技术体系】", en: "[Tech Stack]" },
+  "advantages.label.focus": { zh: "【特色领域】", en: "[Focus]" },
+  "advantages.label.highlights": { zh: "【项目亮点】", en: "[Highlights]" },
+  "advantages.value.experience": { zh: "9 年前端开发、4 年团队管理", en: "9 years frontend · 4 years team leadership" },
+  "advantages.value.stack": { zh: "React、Vue、TypeScript、ES6+", en: "React · Vue · TypeScript · ES6+" },
+  "advantages.value.focus": { zh: "Three.js 三维可视化、Nest.js 全栈应用、微信小程序", en: "Three.js visualization · Nest.js full‑stack · WeChat Mini Programs" },
+  "advantages.value.highlights": { zh: "三维标注项目落地、性能优化、中后台项目重构落地", en: "3D labeling delivered · Performance optimization · Admin refactor delivered" },
+
   "hero.greeting": { zh: "你好，我是", en: "Hi, I’m" },
   "hero.learn": { zh: "了解更多", en: "Learn More" },
   "hero.contact": { zh: "联系我", en: "Contact Me" },
@@ -25,6 +44,23 @@ export const dict = {
     zh: "深厚的技术积累和全栈开发经验",
     en: "Strong technical background and full‑stack experience",
   },
+  // Skills section subtitle
+  // Shared skill category labels and descriptions
+  "skills.frontend": { zh: "前端技术", en: "Frontend" },
+  "skills.backend": { zh: "后端技术", en: "Backend" },
+  "skills.management": { zh: "团队管理", en: "Team Leadership" },
+  "skills.frontend.desc": {
+    zh: "熟练掌握 React、Vue、Three.js、ES6+、TypeScript、微信小程序、AI 辅助编程 等。",
+    en: "Proficient in React, Vue and Three.js with complex interaction and visualization experience.",
+  },
+  "skills.backend.desc": {
+    zh: "掌握 Nest.js、Node.js、MySQL 等后端技术，具备服务端开发与数据存储经验。",
+    en: "Solid with Node, Nest and MySQL; experienced in server‑side development and data storage.",
+  },
+  "skills.management.desc": {
+    zh: "丰富的技术团队管理经验，善于规划技术方向和推动团队创新。",
+    en: "Rich tech team management experience; planning directions and driving innovation.",
+  },
 
   "education.title": { zh: "教育背景", en: "Education" },
   "education.subtitle": {
@@ -37,6 +73,10 @@ export const dict = {
     zh: "通过以下方式与我取得联系，期待与您交流",
     en: "Get in touch via these methods; I look forward to connecting.",
   },
+  // Shared contact labels
+  "contact.phone": { zh: "电话", en: "Phone" },
+  "contact.email": { zh: "邮箱", en: "Email" },
+  "contact.wechat": { zh: "微信号", en: "WeChat" },
   // Contact actions & messages
   "contact.copy.phone": { zh: "复制电话", en: "Copy Phone" },
   "contact.copy.email": { zh: "复制邮箱", en: "Copy Email" },

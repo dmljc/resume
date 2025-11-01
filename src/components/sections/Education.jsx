@@ -1,14 +1,6 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card.jsx";
 import { useI18n } from "../../lib/i18n-core.js";
-
-const education = [
-  {
-    school: { zh: "商丘工学院", en: "Shangqiu Institute of Technology" },
-    degree: { zh: "辅修软件工程 本科", en: "Bachelor’s Degree, Minor in Software Engineering" },
-    time: { zh: "2012 - 2016", en: "2012 - 2016" },
-    desc: { zh: "", en: "" },
-  },
-];
+import { education } from "./education.data.js";
 
 export default function Education(){
   const { t, lang } = useI18n();

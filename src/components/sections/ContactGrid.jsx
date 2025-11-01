@@ -4,30 +4,31 @@ import { Button } from "../ui/button.jsx";
 import { Mail, Phone, QrCode } from "lucide-react";
 import { showMessage } from "../../lib/message.js";
 import { useI18n } from "../../lib/i18n-core.js";
+import { contactInfo } from "./contact.data.js";
 
 const contacts = [
   {
     icon: Phone,
-    title: { zh: "电话", en: "Phone" },
-    desc: "156-5718-9067",
+    titleKey: "contact.phone",
+    desc: contactInfo.phone,
     actionKey: "phone",
   },
   {
     icon: Mail,
-    title: { zh: "邮箱", en: "Email" },
-    desc: "17602143402@163.com",
+    titleKey: "contact.email",
+    desc: contactInfo.email,
     actionKey: "email",
   },
   {
     icon: QrCode,
-    title: { zh: "微信号", en: "WeChat" },
-    desc: "string-next",
+    titleKey: "contact.wechat",
+    desc: contactInfo.wechat,
     actionKey: "wechat"
   },
 ];
 
 export default function ContactGrid(){
-  const { t, lang } = useI18n();
+  const { t } = useI18n();
   return (
     <section id="contact" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
@@ -44,7 +45,7 @@ export default function ContactGrid(){
                     <c.icon className="h-5 w-5 sm:h-6 sm:w-6 text-primary" />
                   </div>
                 </div>
-                <CardTitle className="mt-3 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">{c.title[lang]}</CardTitle>
+                <CardTitle className="mt-3 text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">{t(c.titleKey)}</CardTitle>
               </CardHeader>
               <CardContent className="flex-1">
                 <div className="rounded-lg px-4 py-3 text-sm sm:text-base text-gray-700 dark:text-gray-200 text-center font-mono tracking-wide">
