@@ -111,8 +111,8 @@ export default function Navbar() {
           </Button>
         </div>
         
-        {/* 导航链接 */}
-        <div className="flex items-center gap-6 ml-auto">
+        {/* 导航链接（仅桌面端显示）*/}
+        <div className="hidden md:flex items-center gap-6 ml-auto">
           {navItems.map((item) => (
             <Link
               key={item.id}
