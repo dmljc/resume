@@ -1,3 +1,4 @@
+import * as React from "react";
 import Hero from "./components/sections/Hero.jsx";
 import CoreSkills from "./components/sections/CoreSkills.jsx";
 import WorkTimeline from "./components/sections/WorkTimeline.jsx";
@@ -7,6 +8,55 @@ import ScrollTopButton from "./components/ScrollTopButton.jsx";
 import { Sparkles, Briefcase, GraduationCap, Mail } from "lucide-react";
 
 export default function App(){
+  const [activeSection, setActiveSection] = React.useState(null);
+  
+  React.useEffect(() => {
+    const sections = ['skills', 'experience', 'education', 'contact'];
+    
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      
+      // 如果滚动位置很小（接近页面顶部），不选中任何图标
+      if (scrollPosition < windowHeight * 0.3) {
+        setActiveSection(null);
+        return;
+      }
+      
+      // 检测各个模块的可见性和位置
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (!element) continue;
+        
+        const rect = element.getBoundingClientRect();
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        const elementCenter = elementTop + elementHeight / 2;
+        
+        // 只有当模块中心点接近视口中心时才选中对应图标
+        // 视口中心点为 windowHeight / 2
+        const viewportCenter = windowHeight / 2;
+        const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
+        
+        // 当模块中心点在视口中心点附近时选中
+        if (distanceFromCenter < windowHeight * 0.2) {
+          setActiveSection(section);
+          return;
+        }
+      }
+      
+      // 如果没有模块中心点在视口中心附近，则不选中任何图标
+      setActiveSection(null);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    
+    // 不立即调用handleScroll，初始状态不选中任何图标
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
   return (
     <div>
       <main className="relative pt-16">
@@ -37,10 +87,14 @@ export default function App(){
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="rounded-full w-9 h-9 flex items-center justify-center border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-muted transition-colors duration-200 shadow-sm"
+              className={`rounded-full w-9 h-9 flex items-center justify-center transition-all duration-200 shadow-sm ${
+                activeSection === item.id 
+                  ? "bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] text-white" 
+                  : "border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-muted"
+              }`}
               >
               <span className="sr-only">{item.label}</span>
-              {/* 使用之前的图标风格（lucide-react），并将“核心技能”恢复为几天前的样式 */}
+              {/* 使用之前的图标风格（lucide-react），并将"核心技能"恢复为几天前的样式 */}
               {item.id === 'skills' && <Sparkles size={20} strokeWidth={2} className="shrink-0" />}
               {item.id === 'experience' && <Briefcase size={20} strokeWidth={2} className="shrink-0" />}
               {item.id === 'education' && <GraduationCap size={20} strokeWidth={2} className="shrink-0" />}

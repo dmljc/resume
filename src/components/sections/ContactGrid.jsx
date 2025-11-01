@@ -30,7 +30,7 @@ const contacts = [
 export default function ContactGrid(){
   const { t } = useI18n();
   return (
-    <section id="contact" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
+    <section id="contact" className="pt-14 sm:pt-16 pb-32 sm:pb-40 scroll-mt-24">
       <div className="container mx-auto max-w-7xl">
         <div className="text-center">
           <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("contact.title")}</h2>
