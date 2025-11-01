@@ -10,9 +10,9 @@ export function Badge({ className, variant = "default", ...props }) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-md px-2.5 py-1 text-xs font-medium",
+        "inline-flex items-center rounded-md px-2.5 py-[3px] text-xs font-medium",
         variants[variant],
-        className
+        className,
       )}
       {...props}
     />

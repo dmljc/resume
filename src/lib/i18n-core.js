@@ -11,6 +11,8 @@ export const dict = {
   "nav.resume": { zh: "在线简历", en: "Online Resume" },
   "nav.toggleTheme": { zh: "切换主题", en: "Toggle Theme" },
   "nav.toggleLang": { zh: "切换语言", en: "Toggle Language" },
+  // Resume filename for PDF export
+  "resume.filename": { zh: "张芳朝-前端开发.pdf", en: "Zhang-Fangchao-Frontend-Developer.pdf" },
 
   // Resume page common actions
   "resume.download": { zh: "下载简历", en: "Download Resume" },

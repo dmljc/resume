@@ -7,6 +7,7 @@ import { useI18n } from '../../lib/i18n-core.js'
 import { jobs } from './work.data.js'
 import { education } from './education.data.js'
 import { contactInfo } from './contact.data.js'
+import { downloadResumePdf } from '../../lib/downloadResumePdf.js'
 
 export default function ResumeClone() {
   const { t, lang } = useI18n();
@@ -25,13 +26,17 @@ export default function ResumeClone() {
         <div className="flex items-center justify-between mb-10">
           <h1 className="text-2xl font-bold">{t('nav.resume')}</h1>
           <div className="flex items-center gap-3 print-hidden">
-            <Button variant="outline" className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors">
+            <Button 
+              variant="outline" 
+              className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
+              onClick={() => downloadResumePdf(lang)}
+            >
               <Download size={16} />
               <span>{t('resume.download')}</span>
             </Button>
             <Button 
               variant="outline" 
-              className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors"
+              className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
               onClick={() => window.print()}
             >
               <Printer size={16} />
@@ -47,7 +52,7 @@ export default function ResumeClone() {
               <img
                 src="https://t13.baidu.com/it/u=623182183,2044352368&fm=225&app=113&f=JPEG?w=1685&h=1053&s=1E1A17CB84133DDC53CC4C380300C042"
                 alt={t('brand.name')}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover avatar-image"
               />
             </div>
           </div>
