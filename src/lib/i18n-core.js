@@ -15,6 +15,7 @@ export const dict = {
   // Resume page common actions
   "resume.download": { zh: "下载简历", en: "Download Resume" },
   "resume.print": { zh: "打印简历", en: "Print Resume" },
+  "resume.pcOnly": { zh: "请在 PC 端查看在线简历", en: "Please view the online resume on a PC" },
   // Common profile subtitle shown on both pages
   "profile.subtitle": { zh: "前端开发 | 9年经验", en: "Frontend Developer | 9 Years Experience" },
 
