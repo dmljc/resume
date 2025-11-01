@@ -105,6 +105,11 @@
     max-width: none !important;
   }
 
+  /* 去除为固定导航预留的顶部内边距 */
+  main {
+    padding-top: 0 !important;
+  }
+
   /* 强制两栏 Flex 布局（仅作用两栏容器） */
   .print-area .print-columns {
     display: flex !important;
@@ -134,6 +139,26 @@
   /* 仅交互元素在打印时隐藏（下载、打印按钮等） */
   .print-hidden {
     display: none !important;
+  }
+
+  /* 联系方式在打印时的布局：图标与标签对齐，值换行 */
+  .contact-item {
+    align-items: flex-start !important;
+  }
+  .contact-icon {
+    margin-top: 4px !important; /* 微调与文字的对齐 */
+  }
+  .contact-label {
+    display: inline !important;
+    font-weight: 500;
+  }
+  .contact-value {
+    display: block !important;
+    margin-top: 2px !important;
+    white-space: normal !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.6 !important;
   }
 }
 

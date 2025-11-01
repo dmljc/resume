@@ -19,6 +19,8 @@ export default function Navbar() {
     if (saved === "light") return false;
     return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
+  // 打印时不渲染导航（确保打印预览中无 DOM）
+  const [isPrinting, setIsPrinting] = React.useState(false);
   const { t, toggleLang } = useI18n();
 
   // 根据当前路径判断激活状态
@@ -38,6 +40,30 @@ export default function Navbar() {
     if (meta) meta.setAttribute("content", isDark ? "#0b1220" : "#ffffff");
   }, [isDark]);
 
+  // 监听打印事件与媒体查询，打印时不渲染导航
+  React.useEffect(() => {
+    const mql = window.matchMedia && window.matchMedia('print');
+    const onChange = (e) => setIsPrinting(e.matches);
+    const onBefore = () => setIsPrinting(true);
+    const onAfter = () => setIsPrinting(false);
+
+    if (mql) {
+      if (mql.addEventListener) mql.addEventListener('change', onChange);
+      else if (mql.addListener) mql.addListener(onChange);
+    }
+    window.addEventListener('beforeprint', onBefore);
+    window.addEventListener('afterprint', onAfter);
+
+    return () => {
+      if (mql) {
+        if (mql.removeEventListener) mql.removeEventListener('change', onChange);
+        else if (mql.removeListener) mql.removeListener(onChange);
+      }
+      window.removeEventListener('beforeprint', onBefore);
+      window.removeEventListener('afterprint', onAfter);
+    };
+  }, []);
+
   const toggleTheme = () => setIsDark((v) => !v);
 
   const linkClass = (path) =>
@@ -48,8 +74,13 @@ export default function Navbar() {
         : "text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
     );
 
+  // 打印预览期间不渲染导航 DOM
+  if (isPrinting) {
+    return null;
+  }
+
   return (
-    <nav className={cn("fixed top-0 left-0 right-0 z-50 border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60")}> 
+    <nav className={cn("fixed top-0 left-0 right-0 z-50 border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 print-hidden")}> 
       <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between">
         <Link
           to="/"
