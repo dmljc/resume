@@ -59,7 +59,7 @@ export default function Hero() {
         <div className="flex justify-center lg:justify-end">
           <div id="hero-avatar" className="relative z-10 rounded-full overflow-hidden shadow-lg border border-gray-100 dark:border-gray-700 h-40 w-40 sm:h-48 sm:w-48 md:h-60 md:w-60 lg:h-72 lg:w-72 xl:h-80 xl:w-80 3xl:h-96 3xl:w-96">
             <img
-              src="https://t13.baidu.com/it/u=623182183,2044352368&fm=225&app=113&f=JPEG?w=1685&h=1053&s=1E1A17CB84133DDC53CC4C380300C042"
+              src="./resume.webp"
               alt="avatar"
               className="absolute inset-0 w-full h-full object-cover object-center"
               loading="lazy"

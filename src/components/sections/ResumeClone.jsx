@@ -50,7 +50,7 @@ export default function ResumeClone() {
             <div className="absolute inset-0 rounded-full bg-blue-100/50 dark:bg-blue-900/30 blur-md transform scale-110"></div>
             <div className="relative w-40 h-40 rounded-full bg-gray-100 dark:bg-gray-800 overflow-hidden ring-4 ring-white dark:ring-gray-700 shadow-md">
               <img
-                src="https://t13.baidu.com/it/u=623182183,2044352368&fm=225&app=113&f=JPEG?w=1685&h=1053&s=1E1A17CB84133DDC53CC4C380300C042"
+                src="./resume.webp"
                 alt={t('brand.name')}
                 className="w-full h-full object-cover avatar-image"
               />
