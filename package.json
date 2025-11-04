@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "build:sign": "node scripts/sign-oss-urls.mjs",
+    "build:release": "vite build && node scripts/sign-oss-urls.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -23,6 +25,7 @@
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
+    "ali-oss": "^6.23.0",
     "autoprefixer": "^10.4.21",
     "eslint": "^9.36.0",
     "eslint-plugin-react-hooks": "^5.2.0",
