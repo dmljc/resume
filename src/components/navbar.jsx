@@ -119,6 +119,8 @@ export default function Navbar() {
               to={item.path}
               className={linkClass(item.path)}
               aria-current={isActive(item.path) ? "page" : undefined}
+              onMouseEnter={item.id === 'resume' ? () => import('../pages/ResumePage.jsx') : undefined}
+              onFocus={item.id === 'resume' ? () => import('../pages/ResumePage.jsx') : undefined}
             >
               {t(`nav.${item.id}`)}
             </Link>

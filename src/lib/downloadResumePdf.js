@@ -1,9 +1,11 @@
-import html2pdf from "html2pdf.js";
 import { dict } from "./i18n-core.js";
+import { ensurePdfLibsLoaded } from './cdn-loader.js'
 
 // 使用 DOM 转 PDF 的方式生成简历，避免字体文件依赖
 // 会把 .print-area 区域按 A4 自动分页并下载
 export async function downloadResumePdf(lang = "zh") {
+  await ensurePdfLibsLoaded()
+  const html2pdf = window.html2pdf
   const el = document.querySelector(".print-area");
   if (!el) {
     throw new Error("未找到简历区域 .print-area");

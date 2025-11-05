@@ -1,9 +1,9 @@
 import * as React from "react";
-import Hero from "./components/sections/Hero.jsx";
-import CoreSkills from "./components/sections/CoreSkills.jsx";
-import WorkTimeline from "./components/sections/WorkTimeline.jsx";
-import Education from "./components/sections/Education.jsx";
-import ContactGrid from "./components/sections/ContactGrid.jsx";
+const Hero = React.lazy(() => import("./components/sections/Hero.jsx"));
+const CoreSkills = React.lazy(() => import("./components/sections/CoreSkills.jsx"));
+const WorkTimeline = React.lazy(() => import("./components/sections/WorkTimeline.jsx"));
+const Education = React.lazy(() => import("./components/sections/Education.jsx"));
+const ContactGrid = React.lazy(() => import("./components/sections/ContactGrid.jsx"));
 import ScrollTopButton from "./components/ScrollTopButton.jsx";
 import { Sparkles, Briefcase, GraduationCap, Mail } from "lucide-react";
 
@@ -16,7 +16,6 @@ export default function App(){
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
       const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
       
       // 如果滚动位置很小（接近页面顶部），不选中任何图标
       if (scrollPosition < windowHeight * 0.3) {
@@ -61,19 +60,19 @@ export default function App(){
     <div>
       <main className="relative pt-16">
         <div id="home">
-          <Hero />
+          <React.Suspense fallback={null}><Hero /></React.Suspense>
         </div>
         <section id="skills">
-          <CoreSkills />
+          <React.Suspense fallback={null}><CoreSkills /></React.Suspense>
         </section>
         <section id="experience">
-          <WorkTimeline />
+          <React.Suspense fallback={null}><WorkTimeline /></React.Suspense>
         </section>
         <section id="education">
-          <Education />
+          <React.Suspense fallback={null}><Education /></React.Suspense>
         </section>
         <section id="contact">
-          <ContactGrid />
+          <React.Suspense fallback={null}><ContactGrid /></React.Suspense>
         </section>
         
         {/* 右侧模块导航 */}

@@ -2,8 +2,8 @@ import React, { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './index.css'
-import App from './App.jsx'
-import ResumePage from './pages/ResumePage.jsx'
+const App = React.lazy(() => import('./App.jsx'))
+const ResumePage = React.lazy(() => import('./pages/ResumePage.jsx'))
 import Navbar from './components/navbar.jsx'
 import { I18nProvider } from './lib/i18n.jsx'
 import { dict } from './lib/i18n-core.js'
@@ -22,15 +22,37 @@ export function DynamicHead() {
 }
 
 export function Root() {
+  function PrefetchResume() {
+    const { pathname } = useLocation()
+    React.useEffect(() => {
+      if (pathname === '/') {
+        const idle = 'requestIdleCallback' in window
+          ? window.requestIdleCallback
+          : (fn) => setTimeout(fn, 600)
+        const handle = idle(() => {
+          import('./pages/ResumePage.jsx')
+        })
+        return () => {
+          if ('cancelIdleCallback' in window) {
+            window.cancelIdleCallback(handle)
+          }
+        }
+      }
+    }, [pathname])
+    return null
+  }
   return (
     <BrowserRouter>
       <I18nProvider>
         <DynamicHead />
         <Navbar />
-        <Routes>
-          <Route path="/" element={<App />} />
-          <Route path="/resume" element={<ResumePage />} />
-        </Routes>
+        <PrefetchResume />
+        <React.Suspense fallback={null}>
+          <Routes>
+            <Route path="/" element={<App />} />
+            <Route path="/resume" element={<ResumePage />} />
+          </Routes>
+        </React.Suspense>
       </I18nProvider>
     </BrowserRouter>
   )
