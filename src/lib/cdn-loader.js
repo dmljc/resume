@@ -7,7 +7,6 @@ function loadScript(src) {
     const s = document.createElement('script')
     s.src = src
     s.async = true
-    s.crossOrigin = 'anonymous'
     s.onload = () => { loaded.add(src); resolve() }
     s.onerror = () => reject(new Error(`加载脚本失败: ${src}`))
     document.head.appendChild(s)
