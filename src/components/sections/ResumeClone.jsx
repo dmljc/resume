@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui/card.jsx'
 import { Badge } from '../ui/badge.jsx'
 import { Button } from '../ui/button.jsx'
-import { Download, Printer } from 'lucide-react'
+import { Download, Printer, Loader2 } from 'lucide-react'
 import { useI18n } from '../../lib/i18n-core.js'
 import { jobs } from './work.data.js'
 import { education } from './education.data.js'
@@ -12,6 +12,7 @@ import { downloadResumePdf } from '../../lib/downloadResumePdf.js'
 export default function ResumeClone() {
   const { t, lang } = useI18n();
   const colon = lang === 'zh' ? '：' : ': ';
+  const [downloading, setDownloading] = React.useState(false)
 
   return (
     <section id="resume-clone" className="relative py-10 md:py-12" style={{
@@ -28,10 +29,21 @@ export default function ResumeClone() {
           <div className="flex items-center gap-3 print-hidden">
             <Button 
               variant="outline" 
-              className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
-              onClick={() => downloadResumePdf(lang)}
+              className="flex items-center gap-2 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
+              disabled={downloading}
+              style={{ opacity: downloading ? 1 : undefined }}
+              aria-busy={downloading ? true : undefined}
+              onClick={async () => {
+                if (downloading) return
+                setDownloading(true)
+                try {
+                  await downloadResumePdf(lang)
+                } finally {
+                  setDownloading(false)
+                }
+              }}
             >
-              <Download size={16} />
+              {downloading ? <Loader2 size={16} className="animate-spin shrink-0" /> : <Download size={16} className="shrink-0" />}
               <span>{t('resume.download')}</span>
             </Button>
             <Button 

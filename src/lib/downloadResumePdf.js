@@ -47,8 +47,6 @@ export async function downloadResumePdf(lang = "zh") {
 
   try {
     await html2pdf().set(opt).from(el).save();
-    // 成功提示（可选）：让用户知道下载已开始
-    showMessage(lang === 'zh' ? '开始生成并下载 PDF' : 'Generating and downloading PDF', 2000)
   } catch (err) {
     showMessage(lang === 'zh' ? '生成 PDF 失败，请稍后重试' : 'Failed to generate PDF, please try again later', 3000)
     throw err

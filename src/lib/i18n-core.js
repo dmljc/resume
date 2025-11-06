@@ -12,7 +12,7 @@ export const dict = {
   "nav.toggleTheme": { zh: "切换主题", en: "Toggle Theme" },
   "nav.toggleLang": { zh: "切换语言", en: "Toggle Language" },
   // Resume filename for PDF export
-  "resume.filename": { zh: "张芳朝-前端开发.pdf", en: "Zhang-Fangchao-Frontend-Developer.pdf" },
+  "resume.filename": { zh: "张芳朝-全栈偏前端-9年工作经验.pdf", en: "Zhang-Fangchao-Full-Stack-Frontend-leaning-9-Years-Experience.pdf" },
 
   // Resume page common actions
   "resume.download": { zh: "下载简历", en: "Download Resume" },
