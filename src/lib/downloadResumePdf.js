@@ -1,10 +1,16 @@
 import { dict } from "./i18n-core.js";
 import { ensurePdfLibsLoaded } from './cdn-loader.js'
+import { showMessage } from './message.js'
 
 // 使用 DOM 转 PDF 的方式生成简历，避免字体文件依赖
 // 会把 .print-area 区域按 A4 自动分页并下载
 export async function downloadResumePdf(lang = "zh") {
-  await ensurePdfLibsLoaded()
+  try {
+    await ensurePdfLibsLoaded()
+  } catch (err) {
+    showMessage("PDF 库加载失败，请检查网络或 VITE_PDF_LIB_BASE 配置", 3000)
+    throw err
+  }
   const html2pdf = window.html2pdf
   const el = document.querySelector(".print-area");
   if (!el) {
@@ -41,6 +47,11 @@ export async function downloadResumePdf(lang = "zh") {
 
   try {
     await html2pdf().set(opt).from(el).save();
+    // 成功提示（可选）：让用户知道下载已开始
+    showMessage(lang === 'zh' ? '开始生成并下载 PDF' : 'Generating and downloading PDF', 2000)
+  } catch (err) {
+    showMessage(lang === 'zh' ? '生成 PDF 失败，请稍后重试' : 'Failed to generate PDF, please try again later', 3000)
+    throw err
   } finally {
     // 确保至少有300ms的过渡时间，避免闪烁感太强
     const elapsedTime = Date.now() - startTime;

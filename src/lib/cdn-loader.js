@@ -15,11 +15,17 @@ function loadScript(src) {
 }
 
 export async function ensurePdfLibsLoaded() {
-  // 优先使用配置的 CDN 前缀；默认 jsDelivr
-  const base = (import.meta.env.VITE_PDF_LIB_BASE || 'https://cdn.jsdelivr.net/npm').replace(/\/$/, '')
+  // 优先使用配置的 CDN；支持传入“目录前缀”或“完整文件 URL”
+  const raw = (import.meta.env.VITE_PDF_LIB_BASE || 'https://cdn.jsdelivr.net/npm').trim()
+  const isFileUrl = /\.js(\?.*)?$/.test(raw)
+  const base = isFileUrl ? raw : raw.replace(/\/$/, '')
   // 使用 html2pdf 的 bundle，已包含 jspdf 与 html2canvas
   const version = '0.12.1'
-  const bundlePath = `${base}/html2pdf.js@${version}/dist/html2pdf.bundle.min.js`
-  await loadScript(bundlePath)
+  const primaryUrl = isFileUrl
+    ? base
+    : `${base}/html2pdf.js@${version}/dist/html2pdf.bundle.min.js`
+  // 直接按配置加载；不做兜底
+  await loadScript(primaryUrl)
+
   if (!window.html2pdf) throw new Error('html2pdf 未正确加载（CDN）')
 }
