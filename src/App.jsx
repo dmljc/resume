@@ -12,48 +12,61 @@ export default function App(){
   
   React.useEffect(() => {
     const sections = ['skills', 'experience', 'education', 'contact'];
-    
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // 如果滚动位置很小（接近页面顶部），不选中任何图标
-      if (scrollPosition < windowHeight * 0.3) {
-        setActiveSection(null);
-        return;
-      }
-      
-      // 检测各个模块的可见性和位置
-      for (const section of sections) {
-        const element = document.getElementById(section);
-        if (!element) continue;
-        
-        const rect = element.getBoundingClientRect();
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-        const elementCenter = elementTop + elementHeight / 2;
-        
-        // 只有当模块中心点接近视口中心时才选中对应图标
-        // 视口中心点为 windowHeight / 2
-        const viewportCenter = windowHeight / 2;
-        const distanceFromCenter = Math.abs(elementCenter - viewportCenter);
-        
-        // 当模块中心点在视口中心点附近时选中
-        if (distanceFromCenter < windowHeight * 0.2) {
-          setActiveSection(section);
-          return;
+    let rafId = null;
+    const bandTop = 0.35;
+    const bandBottom = 0.35;
+
+    const pickActive = () => {
+      const vh = window.innerHeight;
+      const bandTopY = vh * bandTop;
+      const bandBottomY = vh * (1 - bandBottom);
+      const centerY = vh / 2;
+      let byOverlap = { id: null, overlap: 0, distance: Infinity };
+      let byTopEnter = null;
+      let nearest = { id: null, distance: Infinity };
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        const rect = el.getBoundingClientRect();
+        const overlap = Math.max(0, Math.min(rect.bottom, bandBottomY) - Math.max(rect.top, bandTopY));
+        const center = rect.top + rect.height / 2;
+        const distance = Math.abs(center - centerY);
+        if (overlap > byOverlap.overlap || (overlap === byOverlap.overlap && distance < byOverlap.distance)) {
+          byOverlap = { id, overlap, distance };
         }
+        if (rect.top <= bandTopY) {
+          byTopEnter = id;
+        }
+        if (distance < nearest.distance) nearest = { id, distance };
       }
-      
-      // 如果没有模块中心点在视口中心附近，则不选中任何图标
-      setActiveSection(null);
+      return byOverlap.overlap > 0 ? byOverlap.id : (byTopEnter || nearest.id || sections[0]);
     };
-    
-    window.addEventListener('scroll', handleScroll);
-    
-    // 不立即调用handleScroll，初始状态不选中任何图标
-    
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    const update = () => {
+      const next = pickActive();
+      if (next && next !== activeSection) setActiveSection(next);
+    };
+
+    const onScroll = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update);
+    };
+    const onResize = () => {
+      if (rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(update);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
+
+    // 初始计算，确保一开始就有选中态
+    update();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onResize);
+      if (rafId) cancelAnimationFrame(rafId);
+    };
   }, []);
   
   return (
@@ -91,6 +104,18 @@ export default function App(){
                   ? "bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] text-white" 
                   : "border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-muted"
               }`}
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById(item.id);
+                if (!el) return;
+                setActiveSection(item.id);
+                try {
+                  const hash = `#${item.id}`;
+                  if (location.hash !== hash) history.replaceState(null, '', hash);
+                } catch (err) { void err; }
+                const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+                el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+              }}
               >
               <span className="sr-only">{item.label}</span>
               {/* 使用之前的图标风格（lucide-react），并将"核心技能"恢复为几天前的样式 */}
