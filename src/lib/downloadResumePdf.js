@@ -31,19 +31,18 @@ export async function downloadResumePdf(lang = "zh") {
       scale: 2, // 提升分辨率
       useCORS: true,
       backgroundColor: "#ffffff",
+      // 忽略渲染交互元素，避免页面跳动与按钮进入PDF
+      ignoreElements: (element) => {
+        const cls = element.classList;
+        if (!cls) return false;
+        return cls.contains('print-hidden') || cls.contains('no-print');
+      },
     },
     jsPDF: { unit: "pt", format: "a4", orientation: "portrait" },
     pagebreak: { mode: ["css", "legacy"] },
   };
 
-  // 为避免某些跨域图片导致画布污染，这里临时隐藏图片再渲染
-  // 但不隐藏头像图片，避免闪烁
-  const imgs = Array.from(el.querySelectorAll("img:not(.avatar-image)"));
-  const originalDisplays = imgs.map((img) => img.style.display);
-  
-  // 添加一个小延迟，让用户感知到正在生成PDF
-  const startTime = Date.now();
-  imgs.forEach((img) => (img.style.display = "none"));
+  // 不再修改页面布局，避免任何跳动
 
   try {
     await html2pdf().set(opt).from(el).save();
@@ -51,13 +50,6 @@ export async function downloadResumePdf(lang = "zh") {
     showMessage(lang === 'zh' ? '生成 PDF 失败，请稍后重试' : 'Failed to generate PDF, please try again later', 3000)
     throw err
   } finally {
-    // 确保至少有300ms的过渡时间，避免闪烁感太强
-    const elapsedTime = Date.now() - startTime;
-    const remainingTime = Math.max(0, 300 - elapsedTime);
-    
-    setTimeout(() => {
-      // 恢复图片显示
-      imgs.forEach((img, i) => (img.style.display = originalDisplays[i] || ""));
-    }, remainingTime);
+    // 无需恢复任何元素，可选择性地做些状态清理
   }
 }

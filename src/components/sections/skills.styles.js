@@ -47,12 +47,13 @@ const BG_COLORS = {
 
 export function tagClass(label) {
   return cn(
+    // 按参考样式实现：text-xs + font-medium，胶囊居中
+    "inline-flex items-center justify-center",
     "rounded-full",
-    "px-3",
-    "py-1",
-    // 居中对齐，避免 PDF 中文本偏移
-    "justify-center",
-    "leading-none",
+    "!px-3",
+    "!py-1",
+    "text-xs",
+    "font-medium",
     "border",
     "shadow-sm",
     "transition-colors",

@@ -178,6 +178,10 @@ body {
   background-repeat: no-repeat;
 }
 
+/* 导出 PDF 时隐藏交互控件（不依赖 @media print） */
+.exporting .print-hidden,
+.exporting .no-print { display: none !important; }
+
 /* 全局平滑滚动与固定头部偏移 */
 html {
   scroll-behavior: smooth;

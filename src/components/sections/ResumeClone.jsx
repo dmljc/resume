@@ -28,7 +28,7 @@ export default function ResumeClone() {
       <div className="container mx-auto max-w-6xl px-4 print-area">
         <div className="flex items-center justify-between mb-10">
           <h1 className="text-2xl font-bold">{t('nav.resume')}</h1>
-          <div className="flex items-center gap-3 print-hidden">
+          <div className="flex items-center gap-3 print-hidden" data-html2canvas-ignore="true">
             <Button 
               variant="outline" 
               className="flex items-center gap-2 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
@@ -109,6 +109,18 @@ export default function ResumeClone() {
                     <div className="text-gray-700 dark:text-gray-300">
                       <span className="contact-label">{t('contact.wechat')}{colon}</span>
                       <span className="contact-value">{contactInfo.wechat}</span>
+                    </div>
+                  </li>
+                  <li className="flex items-center gap-3 contact-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-blue-500 dark:text-blue-400 flex-shrink-0 contact-icon">
+                      <circle cx="12" cy="12" r="10"></circle>
+                      <path d="M2 12h20"></path>
+                      <path d="M12 2a15.3 15.3 0 0 1 0 20"></path>
+                      <path d="M12 2a15.3 15.3 0 0 0 0 20"></path>
+                    </svg>
+                    <div className="text-gray-700 dark:text-gray-300">
+                      <span className="contact-label">{t('contact.website')}{colon}</span>
+                      <a href="https://zhangfc.cn/" target="_blank" rel="noopener noreferrer" className="contact-value text-blue-600 dark:text-blue-400 hover:underline">https://zhangfc.cn/</a>
                     </div>
                   </li>
                 </ul>

@@ -110,6 +110,7 @@ export const dict = {
   "contact.phone": { zh: "电话", en: "Phone" },
   "contact.email": { zh: "邮箱", en: "Email" },
   "contact.wechat": { zh: "微信号", en: "WeChat" },
+  "contact.website": { zh: "个人网站", en: "Website" },
   // Contact actions & messages
   "contact.copy.phone": { zh: "复制电话", en: "Copy Phone" },
   "contact.copy.email": { zh: "复制邮箱", en: "Copy Email" },
