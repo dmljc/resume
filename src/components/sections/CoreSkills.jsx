@@ -1,34 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card.jsx";
 import { Badge } from "../ui/badge.jsx";
 import { useI18n } from "../../lib/i18n-core.js";
-
-const skills = [
-  {
-    titleKey: "skills.frontend",
-    descKey: "skills.frontend.desc",
-    tags: [
-      "React",
-      "Vue",
-      "TypeScript",
-      "Three.js",
-      { zh: "微信小程序", en: "WeChat Mini Programs" },
-    ],
-  },
-  {
-    titleKey: "skills.backend",
-    descKey: "skills.backend.desc",
-    tags: ["Nest.js", "Node.js", "MySQL"],
-  },
-  {
-    titleKey: "skills.management",
-    descKey: "skills.management.desc",
-    tags: [
-      { zh: "技术规划", en: "Tech Strategy" },
-      { zh: "团队建设", en: "Team Building" },
-      { zh: "项目管理", en: "Project Management" },
-    ],
-  },
-];
+import { skills } from "./skills.data.js";
 
 const tagClass = (t) => {
   const common = "px-3 py-1 text-white rounded-full text-sm shadow-sm";

@@ -5,9 +5,11 @@ import { Button } from '../ui/button.jsx'
 import { Download, Printer, Loader2 } from 'lucide-react'
 import { useI18n } from '../../lib/i18n-core.js'
 import { jobs } from './work.data.js'
+import { skills } from './skills.data.js'
 import { education } from './education.data.js'
 import { contactInfo } from './contact.data.js'
 import { downloadResumePdf } from '../../lib/downloadResumePdf.js'
+import { tagClass } from './skills.styles.js' // 导入 tagClass
 
 export default function ResumeClone() {
   const { t, lang } = useI18n();
@@ -72,7 +74,7 @@ export default function ResumeClone() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{t('profile.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 print-columns">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 print-columns">
           <div className="space-y-8">
             <section id="contact">
             <Card className="bg-card shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
@@ -120,31 +122,22 @@ export default function ResumeClone() {
                 <CardTitle className="text-blue-600 dark:text-blue-400 text-lg font-bold">{t('skills.title')}</CardTitle>
               </CardHeader>
               <CardContent className="pb-5">
-              <div className="mb-4">
-                  <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">{t('skills.frontend')}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="px-3 py-1 bg-blue-100 text-blue-800 hover:bg-blue-200 dark:bg-blue-900/50 dark:text-blue-300 dark:hover:bg-blue-900/70 border-none rounded-full">React</Badge>
-                    <Badge className="px-3 py-1 bg-green-100 text-green-800 hover:bg-green-200 dark:bg-green-900/50 dark:text-green-300 dark:hover:bg-green-900/70 border-none rounded-full">Vue</Badge>
-                    <Badge className="px-3 py-1 bg-purple-100 text-purple-800 hover:bg-purple-200 dark:bg-purple-900/50 dark:text-purple-300 dark:hover:bg-purple-900/70 border-none rounded-full">TypeScript</Badge>
-                    <Badge className="px-3 py-1 bg-yellow-100 text-yellow-800 hover:bg-yellow-200 dark:bg-yellow-900/50 dark:text-yellow-300 dark:hover:bg-yellow-900/70 border-none rounded-full">{lang === 'zh' ? '微信小程序' : 'WeChat Mini Programs'}</Badge>
+                {skills.map((s) => (
+                  <div key={s.titleKey} className="mb-4">
+                    <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">{t(s.titleKey)}</h3>
+                    <div className="flex flex-wrap gap-2">
+                      {s.tags.map((tag) => {
+                        const label = typeof tag === 'string' ? tag : tag[lang];
+                        const key = typeof tag === 'string' ? tag : tag.zh;
+                        return (
+                          <Badge key={key} variant="plain" className={tagClass(label)}>
+                            {label}
+                          </Badge>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">{t('skills.backend')}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="px-3 py-1 bg-red-50 text-red-600 hover:bg-red-100 dark:bg-red-900/30 dark:text-red-400 dark:hover:bg-red-900/50 border border-red-200 dark:border-red-800 rounded-full">Nest.js</Badge>
-                    <Badge className="px-3 py-1 bg-blue-50 text-blue-600 hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50 border border-blue-200 dark:border-blue-800 rounded-full">Node.js</Badge>
-                    <Badge className="px-3 py-1 bg-pink-50 text-pink-600 hover:bg-pink-100 dark:bg-pink-900/30 dark:text-pink-400 dark:hover:bg-pink-900/50 border border-pink-200 dark:border-pink-800 rounded-full">MySQL</Badge>
-                  </div>
-                </div>
-                <div className="mb-4">
-                  <h3 className="text-sm font-medium mb-2 text-gray-700 dark:text-gray-300">{t('skills.management')}</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge className="px-3 py-1 bg-indigo-50 text-indigo-600 hover:bg-indigo-100 dark:bg-indigo-900/30 dark:text-indigo-400 dark:hover:bg-indigo-900/50 border border-indigo-200 dark:border-indigo-800 rounded-full">{lang === 'zh' ? '技术规划' : 'Tech Strategy'}</Badge>
-                    <Badge className="px-3 py-1 bg-teal-50 text-teal-600 hover:bg-teal-100 dark:bg-teal-900/30 dark:text-teal-400 dark:hover:bg-teal-900/50 border border-teal-200 dark:border-teal-800 rounded-full">{lang === 'zh' ? '团队建设' : 'Team Building'}</Badge>
-                    <Badge className="px-3 py-1 bg-amber-50 text-amber-600 hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50 border border-amber-200 dark:border-amber-800 rounded-full">{lang === 'zh' ? '项目管理' : 'Project Management'}</Badge>
-                  </div>
-                </div>
+                ))}
               </CardContent>
             </Card>
             </section>
