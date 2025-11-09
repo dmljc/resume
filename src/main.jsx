@@ -6,6 +6,7 @@ const App = React.lazy(() => import('./App.jsx'))
 const ResumePage = React.lazy(() => import('./pages/ResumePage.jsx'))
 const AboutSite = React.lazy(() => import('./pages/AboutSite.jsx'))
 import Navbar from './components/navbar.jsx'
+import Footer from './components/Footer.jsx'
 import { I18nProvider } from './lib/i18n.jsx'
 import { dict } from './lib/i18n-core.js'
 
@@ -50,12 +51,15 @@ export function Root() {
         <Navbar />
         <PrefetchResume />
         <React.Suspense fallback={null}>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/resume" element={<ResumePage />} />
-            <Route path="/about" element={<AboutSite />} />
-          </Routes>
+          <div>
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/resume" element={<ResumePage />} />
+              <Route path="/about" element={<AboutSite />} />
+            </Routes>
+          </div>
         </React.Suspense>
+        <Footer />
       </I18nProvider>
     </BrowserRouter>
   )

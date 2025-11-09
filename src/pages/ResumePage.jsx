@@ -38,7 +38,7 @@ export default function ResumePage() {
       <main className="min-h-screen pt-16">
         <ResumeClone />
       </main>
-        <footer className="border-t py-6 text-center text-sm text-muted-foreground">© {new Date().getFullYear()} Zhang Fangchao</footer>
+        {/* 全局固定 Footer 已显示版权与备案号，这里移除重复 */}
     </div>
   )
 }
