@@ -12,6 +12,7 @@ export const dict = {
   "nav.education": { zh: "教育背景", en: "Education" },
   "nav.contact": { zh: "联系方式", en: "Contact" },
   "nav.resume": { zh: "在线简历", en: "Online Resume" },
+  "nav.aboutSite": { zh: "关于站点", en: "About Site" },
   "nav.toggleTheme": { zh: "切换主题", en: "Toggle Theme" },
   "nav.toggleLang": { zh: "切换语言", en: "Toggle Language" },
   // Resume filename for PDF export
@@ -120,6 +121,56 @@ export const dict = {
     en: "Copy failed, please try again",
   },
   "contact.copy.suffix": { zh: "成功", en: " successfully" },
+
+  // About Site page
+  "about.intro": {
+    zh: "这是一个基于 React 的在线个人简历项目，部署于域名 zhangfc.cn（其中，zhang 是作者姓氏的汉语拼音，fc 是作者名称的拼音首字母）。",
+    en: "This is a React‑based online resume project, hosted at zhangfc.cn (where \"zhang\" is the surname in pinyin, and \"fc\" are the initials of the given name in pinyin).",
+  },
+  "about.features.title": { zh: "项目功能", en: "Features" },
+  "about.features.label.pages": { zh: "页面构成：", en: "Pages:" },
+  "about.features.value.pages": {
+    zh: "包含主页、在线简历、关于站点等。",
+    en: "Includes Home, Online Resume, and About Site.",
+  },
+  "about.features.label.experience": { zh: "交互体验：", en: "User Experience:" },
+  "about.features.value.experience": {
+    zh: "支持中英文双语切换与亮色/暗色主题切换。",
+    en: "Supports bilingual (Chinese/English) and light/dark theme switching.",
+  },
+  "about.features.label.resume": { zh: "简历操作：", en: "Resume Actions:" },
+  "about.features.value.resume": {
+    zh: "在线简历支持直接打印或导出为 PDF。",
+    en: "The online resume supports printing and exporting to PDF.",
+  },
+
+  "about.tech.title": { zh: "技术实现", en: "Implementation" },
+  "about.tech.item.react": {
+    zh: "前端基于 React + React Router 构建，使用 Vite 打包。",
+    en: "Built with React + React Router; bundled with Vite.",
+  },
+  "about.tech.item.tailwind": {
+    zh: "采用 Tailwind CSS 实现响应式布局，兼容移动端与桌面端。",
+    en: "Responsive layout via Tailwind CSS, compatible with mobile and desktop.",
+  },
+  "about.tech.item.i18n": {
+    zh: "集成 i18next 实现国际化，使用 html2pdf.js 实现 PDF 导出功能。",
+    en: "Internationalization via i18next; PDF export via html2pdf.js.",
+  },
+
+  "about.ops.title": { zh: "部署与运维", en: "Deployment & Ops" },
+  "about.ops.item.oss": {
+    zh: "项目部署于阿里云 OSS 静态存储。",
+    en: "Deployed to Alibaba Cloud OSS static storage.",
+  },
+  "about.ops.item.ecs": {
+    zh: "为完成域名 zhangfc.cn 的备案，使用阿里云 ECS 服务器获取备案服务号。",
+    en: "Used Alibaba Cloud ECS to obtain the ICP filing service code for the domain zhangfc.cn.",
+  },
+  "about.ops.item.sslcdn": {
+    zh: "通过配置 SSL 证书实现 HTTPS 访问，并启用 CDN 服务以提升访问性能。",
+    en: "Configured an SSL certificate for HTTPS and enabled CDN to improve performance.",
+  },
 
   "experience.title": { zh: "工作经历", en: "Experience" },
   "experience.subtitle": { zh: "我的职业发展历程", en: "My career journey" },

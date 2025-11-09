@@ -9,6 +9,7 @@ import { useI18n } from "../lib/i18n-core.js";
 const navItems = [
   { id: "home", path: "/" },
   { id: "resume", path: "/resume" },
+  { id: "aboutSite", path: "/about" },
 ];
 
 export default function Navbar() {
@@ -119,8 +120,20 @@ export default function Navbar() {
               to={item.path}
               className={linkClass(item.path)}
               aria-current={isActive(item.path) ? "page" : undefined}
-              onMouseEnter={item.id === 'resume' ? () => import('../pages/ResumePage.jsx') : undefined}
-              onFocus={item.id === 'resume' ? () => import('../pages/ResumePage.jsx') : undefined}
+              onMouseEnter={
+                item.id === 'resume'
+                  ? () => import('../pages/ResumePage.jsx')
+                  : item.id === 'aboutSite'
+                  ? () => import('../pages/AboutSite.jsx')
+                  : undefined
+              }
+              onFocus={
+                item.id === 'resume'
+                  ? () => import('../pages/ResumePage.jsx')
+                  : item.id === 'aboutSite'
+                  ? () => import('../pages/AboutSite.jsx')
+                  : undefined
+              }
             >
               {t(`nav.${item.id}`)}
             </Link>

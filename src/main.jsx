@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './index.css'
 const App = React.lazy(() => import('./App.jsx'))
 const ResumePage = React.lazy(() => import('./pages/ResumePage.jsx'))
+const AboutSite = React.lazy(() => import('./pages/AboutSite.jsx'))
 import Navbar from './components/navbar.jsx'
 import { I18nProvider } from './lib/i18n.jsx'
 import { dict } from './lib/i18n-core.js'
@@ -15,7 +16,8 @@ export function DynamicHead() {
   React.useEffect(() => {
     const siteTitle = dict['site.title']?.[lang] ?? dict['site.title'].zh
     const resumeTitle = dict['nav.resume']?.[lang] ?? dict['nav.resume'].zh
-    document.title = pathname === '/resume' ? `${resumeTitle}` : siteTitle
+    const aboutTitle = dict['nav.aboutSite']?.[lang] ?? '关于站点'
+    document.title = pathname === '/resume' ? `${resumeTitle}` : (pathname === '/about' ? `${aboutTitle}` : siteTitle)
     document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en'
   }, [pathname, lang])
   return null
@@ -51,6 +53,7 @@ export function Root() {
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/resume" element={<ResumePage />} />
+            <Route path="/about" element={<AboutSite />} />
           </Routes>
         </React.Suspense>
       </I18nProvider>

@@ -7,8 +7,8 @@ export function I18nProvider({ children }) {
   const [lang, setLang] = React.useState(() => localStorage.getItem("lang") || "zh");
 
   React.useEffect(() => {
+    // 仅维护语言状态持久化；标题与 html lang 由路由层统一管理
     localStorage.setItem("lang", lang);
-    document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
   }, [lang]);
 
   const t = React.useCallback((key) => {
@@ -17,16 +17,9 @@ export function I18nProvider({ children }) {
     return entry[lang] ?? entry.zh;
   }, [lang]);
 
-  React.useLayoutEffect(() => {
-    // Update browser tab title on language change without visual delay
-    document.title = t("site.title");
-  }, [lang, t]);
-
   const toggleLang = React.useCallback(() => {
     const nextLang = lang === "zh" ? "en" : "zh";
-    // Immediately update title and html lang to avoid visible delay
-    document.title = dict["site.title"]?.[nextLang] ?? dict["site.title"].zh;
-    document.documentElement.lang = nextLang === "zh" ? "zh-CN" : "en";
+    // 仅更新语言与持久化；标题和 html lang 在 DynamicHead 中统一处理
     localStorage.setItem("lang", nextLang);
     setLang(nextLang);
   }, [lang]);
