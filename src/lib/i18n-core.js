@@ -124,8 +124,8 @@ export const dict = {
 
   // About Site page
   "about.intro": {
-    zh: "这是一个基于 React 的在线个人简历项目，部署于域名 zhangfc.cn（其中，zhang 是作者姓氏的汉语拼音，fc 是作者名称的拼音首字母）。",
-    en: "This is a React‑based online resume project, hosted at zhangfc.cn (where \"zhang\" is the surname in pinyin, and \"fc\" are the initials of the given name in pinyin).",
+    zh: "这是一个由 Trae 国际版 AI 编辑器开发、基于 React 的在线个人简历项目，托管于 zhangfc.cn 域名下（其中，“zhang”为作者姓氏的汉语拼音，“fc”为作者名字的拼音首字母）。",
+    en: "This is an online resume project built with the Trae AI Editor (International Edition), implemented with React, and hosted at zhangfc.cn (\"zhang\" is the surname in pinyin; \"fc\" are the initials of the given name).",
   },
   "about.features.title": { zh: "项目功能", en: "Features" },
   "about.features.label.pages": { zh: "页面构成：", en: "Pages:" },
