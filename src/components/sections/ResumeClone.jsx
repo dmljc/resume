@@ -3,6 +3,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../ui
 import { Badge } from '../ui/badge.jsx'
 import { Button } from '../ui/button.jsx'
 import { Download, Printer, Loader2 } from 'lucide-react'
+import { printWithStyles } from '../../lib/printStyles.js'
 import { useI18n } from '../../lib/i18n-core.js'
 import { jobs } from './work.data.js'
 import { skills } from './skills.data.js'
@@ -51,7 +52,7 @@ export default function ResumeClone() {
             <Button 
               variant="outline" 
               className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
-              onClick={() => window.print()}
+              onClick={() => printWithStyles()}
             >
               <Printer size={16} />
               <span>{t('resume.print')}</span>

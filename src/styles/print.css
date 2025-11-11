@@ -1,0 +1,58 @@
+@media print {
+  .no-print { display: none !important; }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 0mm;
+    margin-top: 24px;
+  }
+  @page :first { margin-top: 0mm; }
+
+  .print-area {
+    max-width: none;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  main { padding-top: 0 !important; }
+
+  .print-area .print-columns { display: flex !important; gap: 0 !important; }
+  .print-area .print-columns > div:first-child {
+    width: 33.3333% !important;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+  }
+  .print-area .print-columns > div:last-child {
+    width: 66.6667% !important;
+    padding-left: 16px !important;
+    padding-right: 0 !important;
+  }
+
+  .print-area .card { break-inside: avoid; page-break-inside: avoid; }
+  .print-hidden { display: none !important; }
+
+  /* 统一模块之间的垂直间距为 16px */
+  .print-area section + section { margin-top: 16px !important; }
+  .print-area .space-y-6 > * + * { margin-top: 16px !important; }
+  .print-area .space-y-8 > * + * { margin-top: 16px !important; }
+
+  /* 联系方式在打印时的布局微调 */
+  .contact-item { align-items: flex-start !important; }
+  .contact-icon { margin-top: 4px !important; }
+  .contact-label { display: inline !important; font-weight: 500; }
+  .contact-value {
+    display: block !important;
+    margin-top: 2px !important;
+    white-space: normal !important;
+    word-break: break-all !important;
+    overflow-wrap: anywhere !important;
+    line-height: 1.6 !important;
+  }
+}

@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@media print {
-  .no-print {
-    display: none !important;
-  }
-}
+/* 打印样式已迁移到 src/styles/print.css，并在点击打印时按需加载 */
 
 :root {
   --background: 0 0% 100%;
@@ -90,91 +86,7 @@
   --ring: 210 100% 66%;
 }
 
-/* 打印样式，确保所见即所得 */
-@media print {
-  /* 保留颜色与背景 */
-  * {
-    -webkit-print-color-adjust: exact !important;
-    print-color-adjust: exact !important;
-    box-shadow: none !important; /* 移除所有阴影 */
-    border: none !important; /* 移除所有边框 */
-  }
-
-  /* 统一纸张与页边距（A4） */
-  @page {
-    size: A4;
-    margin: 0mm; /* 原为 12mm，按需求减半 */
-    margin-top: 24px; /* 第二页及后续页顶部额外留白 */
-  }
-  /* 第一页保持原顶部边距（不额外加 24px）*/
-  @page :first {
-    margin-top: 0mm;
-  }
-
-  /* 打印主区域：强制 A4 宽度，不再跟随 max-w-6xl */
-  .print-area {
-    max-width: none;
-    padding-left: 16px; /* 原 px-4(16px)，打印减半 */
-    padding-right: 16px;
-  }
-
-  /* 去除为固定导航预留的顶部内边距 */
-  main {
-    padding-top: 0 !important;
-  }
-
-  /* 强制两栏 Flex 布局（仅作用两栏容器） */
-  .print-area .print-columns {
-    display: flex !important;
-    gap: 0 !important;
-  }
-
-  /* 左侧栏 */
-  .print-area .print-columns > div:first-child {
-    width: 33.3333% !important;
-    /* 将中缝的一半让给左栏：保留右栏 1rem，左栏改为 0 */
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-  }
-
-  /* 右侧栏 */
-  .print-area .print-columns > div:last-child {
-    width: 66.6667% !important;
-    padding-left: 1rem !important; /* 保持右栏 1rem，整体中缝减半 */
-    padding-right: 0 !important;
-  }
-
-  /* 确保卡片在打印时正确显示 */
-  .print-area .card {
-    break-inside: avoid;
-    page-break-inside: avoid;
-  }
-
-  /* 仅交互元素在打印时隐藏（下载、打印按钮等） */
-  .print-hidden {
-    display: none !important;
-  }
-
-  /* 联系方式在打印时的布局：图标与标签对齐，值换行 */
-  .contact-item {
-    align-items: flex-start !important;
-  }
-  .contact-icon {
-    margin-top: 4px !important; /* 微调与文字的对齐 */
-  }
-  .contact-label {
-    display: inline !important;
-    font-weight: 500;
-  }
-  .contact-value {
-    display: block !important;
-    margin-top: 2px !important;
-    white-space: normal !important;
-    word-break: break-all !important;
-    overflow-wrap: anywhere !important;
-    line-height: 1.6 !important;
-  }
-}
+/* 打印样式已迁移到 src/styles/print.css，并在点击打印时按需加载 */
 
 html, body, #root { height: 100%; }
 body {
