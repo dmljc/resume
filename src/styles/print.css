@@ -5,8 +5,21 @@
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
     box-shadow: none !important;
-    border: none !important;
   }
+
+  /* 移除页面与容器背景颜色/图像，纯白打印 */
+  body, .print-area {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+  /* 移除简历容器自身的背景（inline style 的渐变）*/
+  #resume-clone, section#resume-clone {
+    background: #ffffff !important;
+    background-image: none !important;
+  }
+  /* 容器层也置白，避免继承导致顶部色带 */
+  .container { background: #ffffff !important; background-image: none !important; }
+  .hero-grid-overlay, .wave-divider { display: none !important; }
 
   @page {
     size: A4;
@@ -35,7 +48,13 @@
     padding-right: 0 !important;
   }
 
-  .print-area .card { break-inside: avoid; page-break-inside: avoid; }
+  .print-area .card {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border: 1px solid #e5e7eb !important; /* 添加模块边框 */
+    background-color: #ffffff !important; /* 模块背景置白 */
+    box-shadow: none !important; /* 模块去阴影 */
+  }
   .print-hidden { display: none !important; }
 
   /* 统一模块之间的垂直间距为 16px */
