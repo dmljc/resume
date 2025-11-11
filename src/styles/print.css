@@ -72,9 +72,10 @@
   .contact-value {
     display: block !important;
     margin-top: 2px !important;
-    white-space: normal !important;
-    word-break: break-all !important;
-    overflow-wrap: anywhere !important;
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
     line-height: 1.6 !important;
   }
+  .contact-value a { white-space: nowrap !important; }
 }
