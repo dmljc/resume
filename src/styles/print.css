@@ -26,7 +26,10 @@
     margin: 0mm;
     margin-top: 24px;
   }
-  @page :first { margin-top: 0mm; }
+  @page :first {
+    margin-top: 0mm;
+    margin-bottom: 24px; /* 第一个页面底部额外留白 */
+  }
 
   .print-area {
     max-width: none;
