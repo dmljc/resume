@@ -103,12 +103,19 @@
   /* 统一纸张与页边距（A4） */
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 0mm; /* 原为 12mm，按需求减半 */
+    margin-top: 24px; /* 第二页及后续页顶部额外留白 */
+  }
+  /* 第一页保持原顶部边距（不额外加 24px）*/
+  @page :first {
+    margin-top: 0mm;
   }
 
   /* 打印主区域：强制 A4 宽度，不再跟随 max-w-6xl */
   .print-area {
-    max-width: none !important;
+    max-width: none;
+    padding-left: 16px; /* 原 px-4(16px)，打印减半 */
+    padding-right: 16px;
   }
 
   /* 去除为固定导航预留的顶部内边距 */
@@ -125,14 +132,15 @@
   /* 左侧栏 */
   .print-area .print-columns > div:first-child {
     width: 33.3333% !important;
-    padding-right: 1rem !important;
+    /* 将中缝的一半让给左栏：保留右栏 1rem，左栏改为 0 */
+    padding-right: 0 !important;
     padding-left: 0 !important;
   }
 
   /* 右侧栏 */
   .print-area .print-columns > div:last-child {
     width: 66.6667% !important;
-    padding-left: 1rem !important;
+    padding-left: 1rem !important; /* 保持右栏 1rem，整体中缝减半 */
     padding-right: 0 !important;
   }
 
