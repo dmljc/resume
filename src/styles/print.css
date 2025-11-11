@@ -58,12 +58,34 @@
     background-color: #ffffff !important; /* 模块背景置白 */
     box-shadow: none !important; /* 模块去阴影 */
   }
+
+  /* 缩小所有模块（卡片）内部上下内边距，进一步减少高度避免分页 */
+  .print-area .card .pt-5 { padding-top: 6px !important; }
+  .print-area .card .pb-5 { padding-bottom: 6px !important; }
+  .print-area .card .pb-6 { padding-bottom: 6px !important; }
+  .print-area .card .pt-6 { padding-top: 6px !important; }
+  .print-area .card .px-4 { padding-left: 10px !important; padding-right: 10px !important; }
+  .print-area .card .sm\:px-6 { padding-left: 10px !important; padding-right: 10px !important; }
+
+  /* 缩小标签/徽章的间距，进一步压缩高度 */
+  .print-area .gap-2 { gap: 4px !important; }
   .print-hidden { display: none !important; }
 
-  /* 统一模块之间的垂直间距为 16px */
-  .print-area section + section { margin-top: 16px !important; }
-  .print-area .space-y-6 > * + * { margin-top: 16px !important; }
-  .print-area .space-y-8 > * + * { margin-top: 16px !important; }
+  /* 进一步压缩垂直间距，避免核心技能分页 */
+  .print-area section + section { margin-top: 12px !important; }
+  .print-area .space-y-6 > * + * { margin-top: 12px !important; }
+  .print-area .space-y-8 > * + * { margin-top: 12px !important; }
+
+  /* 核心技能模块：在打印时更饱满地铺满卡片区域 */
+  .print-area #skills .pt-5 { padding-top: 10px !important; }
+  .print-area #skills .pb-5 { padding-bottom: 12px !important; }
+  .print-area #skills .mb-4 { margin-bottom: 8px !important; }
+  .print-area #skills h3 { margin-bottom: 6px !important; }
+  .print-area #skills .flex.flex-wrap.gap-2 > span { font-size: 12px !important; padding: 4px 10px !important; }
+  .print-area #skills .gap-2 { gap: 8px !important; }
+
+  /* 联系方式：进一步压缩列表垂直间距 */
+  .print-area #contact .space-y-4 > * + * { margin-top: 10px !important; }
 
   /* 联系方式在打印时的布局微调 */
   .contact-item { align-items: flex-start !important; }
