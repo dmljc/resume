@@ -76,7 +76,7 @@ export default function ResumeClone() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 print-columns">
-          <div className="space-y-8">
+          <div className="space-y-4">
             <section id="contact">
             <Card className="bg-card shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-2 pt-5">
@@ -175,7 +175,7 @@ export default function ResumeClone() {
             </section>
           </div>
 
-          <div className="md:col-span-2 space-y-6">
+          <div className="md:col-span-2 space-y-4">
             <Card className="bg-card shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-2 pt-5">
                 <CardTitle className="text-blue-600 dark:text-blue-400 text-lg font-bold">{t('advantages.title')}</CardTitle>
