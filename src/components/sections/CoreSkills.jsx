@@ -43,7 +43,7 @@ export default function CoreSkills(){
           <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("skills.title")}</h2>
           <p className="mt-4 text-sm sm:text-lg text-gray-600 dark:text-gray-300">{t("skills.subtitle")}</p>
         </div>
-        <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 sm:mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {skills.map((s)=> (
             <Card key={s.titleKey} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700">
               <CardHeader>

@@ -36,7 +36,7 @@ export default function ContactGrid(){
           <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("contact.title")}</h2>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground">{t("contact.subtitle")}</p>
         </div>
-        <div className="mt-8 sm:mt-10 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
+        <div className="mt-8 sm:mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 items-stretch">
           {contacts.map((c) => (
             <Card key={c.desc} className="text-card-foreground shadow-black/5 bg-card rounded-lg shadow-md transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-gray-100 dark:border-gray-700 h-full flex flex-col">
               <CardHeader className="pb-4 text-center">
