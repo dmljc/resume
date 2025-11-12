@@ -26,7 +26,7 @@ export default function AboutSite() {
         </p>
       </div>
 
-      <div className="space-y-5">
+      <div className="space-y-6">
         {/* 项目功能 */}
         <Card className="bg-card text-card-foreground shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
           <CardHeader className="pb-1 pt-4">
