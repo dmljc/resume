@@ -55,6 +55,7 @@ export async function downloadResumePdf(lang = "zh") {
   // 注入打印样式至屏幕环境，保证导出与在线打印一致
   await loadPdfStylesInline()
 
+
   // 生成文件名：优先使用 i18n 字典中的翻译，缺失时使用回退
   const filename = (dict["resume.filename"] && dict["resume.filename"][lang])
     ? dict["resume.filename"][lang]
