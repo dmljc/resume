@@ -52,8 +52,7 @@ export async function downloadResumePdf(lang = "zh") {
     throw new Error("未找到简历区域 .print-area");
   }
 
-  // 注入打印样式至屏幕环境，保证导出与在线打印一致
-  await loadPdfStylesInline()
+
 
 
   // 生成文件名：优先使用 i18n 字典中的翻译，缺失时使用回退
@@ -92,8 +91,5 @@ export async function downloadResumePdf(lang = "zh") {
   } catch (err) {
     showMessage(lang === 'zh' ? '生成 PDF 失败，请稍后重试' : 'Failed to generate PDF, please try again later', 3000)
     throw err
-  } finally {
-    // 恢复样式，避免影响正常页面
-    unloadPdfStylesInline()
   }
 }
