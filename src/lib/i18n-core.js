@@ -154,8 +154,8 @@ export const dict = {
     en: "Responsive layout via Tailwind CSS, compatible with mobile and desktop.",
   },
   "about.tech.item.i18n": {
-    zh: "集成 i18next 实现国际化，使用 html2pdf.js 实现 PDF 导出功能。",
-    en: "Internationalization via i18next; PDF export via html2pdf.js.",
+    zh: "集成 i18next 实现国际化，使用浏览器原生打印功能实现 PDF 导出。",
+    en: "Internationalization via i18next; PDF export via browser native print.",
   },
 
   "about.ops.title": { zh: "部署与运维", en: "Deployment & Ops" },

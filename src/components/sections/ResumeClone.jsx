@@ -9,7 +9,6 @@ import { jobs } from './work.data.js'
 import { skills } from './skills.data.js'
 import { education } from './education.data.js'
 import { contactInfo } from './contact.data.js'
-import { downloadResumePdf } from '../../lib/downloadResumePdf.js'
 import { downloadResumePdfViaPrint } from '../../lib/downloadResumePdfV2.js'
 import { tagClass } from './skills.styles.js' // 导入 tagClass
 
@@ -44,8 +43,6 @@ export default function ResumeClone() {
                 try {
                   // 使用浏览器原生打印功能（更可靠）
                   await downloadResumePdfViaPrint(lang)
-                  // 如果想使用原来的 html2pdf 方案，可以取消下面的注释
-                  // await downloadResumePdf(lang)
                 } finally {
                   setDownloading(false)
                 }
