@@ -8,7 +8,7 @@ export default function WorkTimeline(){
   const { t, lang } = useI18n();
   return (
     <section id="experience" className="pt-14 sm:pt-16 pb-20 sm:pb-24 scroll-mt-24">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="text-2xl sm:text-3xl font-bold gradient-brand">{t("experience.title")}</h2>
           <p className="mt-2 text-sm sm:text-base text-muted-foreground">{t("experience.subtitle")}</p>

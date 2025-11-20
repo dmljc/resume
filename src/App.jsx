@@ -99,10 +99,10 @@ export default function App(){
             <a
               key={item.id}
               href={`#${item.id}`}
-              className={`rounded-full w-9 h-9 flex items-center justify-center transition-all duration-200 shadow-sm ${
+              className={`rounded-full w-9 h-9 flex items-center justify-center transition-all duration-200 shadow-sm cursor-pointer ${
                 activeSection === item.id 
-                  ? "bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] text-white" 
-                  : "border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-muted"
+                  ? "bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] text-white hover:opacity-90 hover:scale-105" 
+                  : "border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-muted hover:scale-105"
               }`}
               onClick={(e) => {
                 e.preventDefault();

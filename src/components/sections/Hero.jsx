@@ -10,7 +10,7 @@ export default function Hero() {
     <section id="home" className="relative overflow-hidden">
       {/* 背景栅格质感覆盖 */}
       <div className="hero-grid-overlay" />
-      <div className="container mx-auto max-w-7xl py-16 sm:py-20 md:py-28 lg:py-32 grid gap-8 sm:gap-10 lg:gap-12 items-center lg:grid-cols-[2fr_1fr]">
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 md:py-28 lg:py-32 grid gap-8 sm:gap-10 lg:gap-12 items-center lg:grid-cols-[2fr_1fr]">
         <div>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">{t("hero.greeting")}</h1>
           <div className="mt-2">

@@ -1,6 +1,35 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@source "../index.html";
+@source "../src/**/*.{js,jsx,ts,tsx}";
+
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222.2 84% 4.9%);
+  --color-muted: hsl(210 40% 96.1%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(222.2 84% 4.9%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-border: hsl(214.3 31% 91.4%);
+  --color-input: hsl(214.3 31% 91.4%);
+  --color-primary: hsl(224 90% 56%);
+  --color-primary-foreground: hsl(210 40% 98%);
+  --color-secondary: hsl(240 6% 97%);
+  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-accent: hsl(250 95% 60%);
+  --color-accent-foreground: hsl(210 40% 98%);
+  --color-ring: hsl(224 90% 56%);
+  
+  --radius: 12px;
+  
+  --grad-from: 226 89% 64%;
+  --grad-to: 286 89% 64%;
+  --grad-alt: 164 72% 48%;
+}
 
 /* 打印样式已迁移到 src/styles/print.css，并在点击打印时按需加载 */
 
@@ -67,6 +96,25 @@
 }
 
 .dark {
+  --color-background: hsl(222.2 84% 4.9%);
+  --color-foreground: hsl(210 40% 98%);
+  --color-muted: hsl(217.2 32.6% 17.5%);
+  --color-muted-foreground: hsl(215 20.2% 65.1%);
+  --color-popover: hsl(222.2 84% 4.9%);
+  --color-popover-foreground: hsl(210 40% 98%);
+  --color-card: hsl(222.2 84% 4.9%);
+  --color-card-foreground: hsl(210 40% 98%);
+  --color-border: hsl(217.2 32.6% 17.5%);
+  --color-input: hsl(217.2 32.6% 17.5%);
+  --color-primary: hsl(210 100% 66%);
+  --color-primary-foreground: hsl(222.2 84% 4.9%);
+  --color-secondary: hsl(217.2 32.6% 17.5%);
+  --color-secondary-foreground: hsl(210 40% 98%);
+  --color-accent: hsl(250 95% 66%);
+  --color-accent-foreground: hsl(222.2 84% 5%);
+  --color-ring: hsl(210 100% 66%);
+  
+  /* 保持向后兼容的 CSS 变量 */
   --background: 222.2 84% 4.9%;
   --foreground: 210 40% 98%;
   --popover: 222.2 84% 4.9%;

@@ -33,7 +33,7 @@ export default function ScrollTopButton(){
         aria-label="返回顶部"
         title="返回顶部"
         onClick={scrollTop}
-        className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100 shadow-sm"
+        className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted hover:scale-105 dark:text-gray-300 dark:hover:text-gray-100 shadow-sm transition-all duration-200"
       >
         <ArrowUp size={22} strokeWidth={2} />
       </Button>

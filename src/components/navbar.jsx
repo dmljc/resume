@@ -69,10 +69,10 @@ export default function Navbar() {
 
   const linkClass = (path) =>
     cn(
-      "transition-colors duration-200 text-[15px] font-medium rounded-full px-3 py-1 text-center",
+      "transition-colors duration-200 text-[15px] font-medium rounded-full px-3 py-1 text-center cursor-pointer",
       isActive(path)
-        ? "text-white bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] shadow-sm"
-        : "text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100"
+        ? "text-white bg-gradient-to-r from-[hsl(var(--grad-from))] to-[hsl(var(--grad-to))] shadow-sm hover:opacity-90"
+        : "text-gray-700 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:text-gray-100 dark:hover:bg-gray-800"
     );
 
   // 打印预览期间不渲染导航 DOM
@@ -81,11 +81,11 @@ export default function Navbar() {
   }
 
   return (
-    <nav className={cn("fixed top-0 left-0 right-0 z-50 border-b bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 print-hidden")}> 
-      <div className="container mx-auto max-w-7xl flex h-16 items-center justify-between">
+    <nav className={cn("fixed top-0 left-0 right-0 z-50 border-b border-gray-200 dark:border-gray-800 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/60 print-hidden")}> 
+      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
         <Link
           to="/"
-          className="font-semibold gradient-brand text-lg tracking-wide"
+          className="font-semibold gradient-brand text-lg tracking-wide transition-opacity duration-200 hover:opacity-80 cursor-pointer"
         >
           {t("brand.name")}
         </Link>
@@ -97,7 +97,7 @@ export default function Navbar() {
             size="sm"
             aria-label={t("nav.toggleLang")}
             onClick={toggleLang}
-            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100 shadow-sm"
+            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted hover:scale-105 dark:text-gray-300 dark:hover:text-gray-100 shadow-sm transition-all duration-200"
           >
             <Languages size={22} strokeWidth={2} />
           </Button>
@@ -106,7 +106,7 @@ export default function Navbar() {
             size="sm"
             aria-label={t("nav.toggleTheme")}
             onClick={toggleTheme}
-            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100 shadow-sm"
+            className="rounded-full w-9 h-9 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted hover:scale-105 dark:text-gray-300 dark:hover:text-gray-100 shadow-sm transition-all duration-200"
           >
             {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
           </Button>
@@ -145,7 +145,7 @@ export default function Navbar() {
             size="sm"
             aria-label={t("nav.toggleLang")}
             onClick={toggleLang}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted hover:scale-105 dark:text-gray-300 dark:hover:text-gray-100 transition-all duration-200"
           >
             <Languages size={22} strokeWidth={2} />
           </Button>
@@ -154,7 +154,7 @@ export default function Navbar() {
             size="sm"
             aria-label={t("nav.toggleTheme")}
             onClick={toggleTheme}
-            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted dark:text-gray-300 dark:hover:text-gray-100"
+            className="rounded-full w-8 h-8 p-0 border border-gray-200 dark:border-gray-700 text-gray-700 hover:bg-muted hover:scale-105 dark:text-gray-300 dark:hover:text-gray-100 transition-all duration-200"
           >
             {isDark ? <Sun size={22} strokeWidth={2} /> : <Moon size={22} strokeWidth={2} />}
           </Button>

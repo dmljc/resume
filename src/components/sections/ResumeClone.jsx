@@ -10,12 +10,14 @@ import { skills } from './skills.data.js'
 import { education } from './education.data.js'
 import { contactInfo } from './contact.data.js'
 import { downloadResumePdf } from '../../lib/downloadResumePdf.js'
+import { downloadResumePdfViaPrint } from '../../lib/downloadResumePdfV2.js'
 import { tagClass } from './skills.styles.js' // 导入 tagClass
 
 export default function ResumeClone() {
   const { t, lang } = useI18n();
   const colon = lang === 'zh' ? '：' : ': ';
   const [downloading, setDownloading] = React.useState(false)
+  const [printing, setPrinting] = React.useState(false)
 
   return (
     <section id="resume-clone" className="relative py-10 md:py-12" style={{
@@ -33,14 +35,17 @@ export default function ResumeClone() {
             <Button 
               variant="outline" 
               className="flex items-center gap-2 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
-              disabled={downloading}
+              disabled={downloading || printing}
               style={{ opacity: downloading ? 1 : undefined }}
               aria-busy={downloading ? true : undefined}
               onClick={async () => {
-                if (downloading) return
+                if (downloading || printing) return
                 setDownloading(true)
                 try {
-                  await downloadResumePdf(lang)
+                  // 使用浏览器原生打印功能（更可靠）
+                  await downloadResumePdfViaPrint(lang)
+                  // 如果想使用原来的 html2pdf 方案，可以取消下面的注释
+                  // await downloadResumePdf(lang)
                 } finally {
                   setDownloading(false)
                 }
@@ -51,10 +56,23 @@ export default function ResumeClone() {
             </Button>
             <Button 
               variant="outline" 
-              className="flex items-center gap-1 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
-              onClick={() => printWithStyles()}
+              className="flex items-center gap-2 rounded-md px-4 h-9 border-gray-400 text-gray-900 hover:bg-gray-100 hover:border-gray-500 dark:border-gray-600 dark:text-gray-100 dark:hover:bg-gray-800 dark:hover:border-gray-500 transition-colors no-print"
+              disabled={downloading || printing}
+              style={{ opacity: printing ? 1 : undefined }}
+              aria-busy={printing ? true : undefined}
+              onClick={() => {
+                if (downloading || printing) return
+                setPrinting(true)
+                // 监听打印对话框关闭事件
+                const handleAfterPrint = () => {
+                  setPrinting(false)
+                  window.removeEventListener('afterprint', handleAfterPrint)
+                }
+                window.addEventListener('afterprint', handleAfterPrint)
+                printWithStyles()
+              }}
             >
-              <Printer size={16} />
+              {printing ? <Loader2 size={16} className="animate-spin shrink-0" /> : <Printer size={16} className="shrink-0" />}
               <span>{t('resume.print')}</span>
             </Button>
           </div>
@@ -121,7 +139,7 @@ export default function ResumeClone() {
                     </svg>
                     <div className="text-gray-700 dark:text-gray-300">
                       <span className="contact-label">{t('contact.website')}{colon}</span>
-                      <a href="https://zhangfc.cn/" target="_blank" rel="noopener noreferrer" className="contact-value text-blue-600 dark:text-blue-400 hover:underline">https://zhangfc.cn/</a>
+                      <a href="https://zhangfc.cn/" target="_blank" rel="noopener noreferrer" className="contact-value text-blue-600 dark:text-blue-400 hover:underline hover:text-blue-700 dark:hover:text-blue-300 transition-colors duration-200 cursor-pointer">https://zhangfc.cn/</a>
                     </div>
                   </li>
                 </ul>
