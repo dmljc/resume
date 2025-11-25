@@ -27,7 +27,7 @@ export default function ResumeClone() {
       backgroundRepeat: 'no-repeat'
     }}>
       <div className="hero-grid-overlay" />
-      <div className="container mx-auto max-w-6xl px-4 print-area">
+      <div className="container mx-auto max-w-6xl px-6 print-area">
         <div className="flex items-center justify-between mb-10">
           <h1 className="text-2xl font-bold">{t('nav.resume')}</h1>
           <div className="flex items-center gap-3 print-hidden" data-html2canvas-ignore="true">
@@ -90,8 +90,8 @@ export default function ResumeClone() {
           <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">{t('profile.subtitle')}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 print-columns">
-          <div className="space-y-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 print-columns">
+          <div className="space-y-6">
             <section id="contact">
             <Card className="bg-card shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-2 pt-5">
@@ -190,7 +190,7 @@ export default function ResumeClone() {
             </section>
           </div>
 
-          <div className="md:col-span-2 space-y-4">
+          <div className="md:col-span-2 space-y-6">
             <Card className="bg-card shadow-lg border border-border rounded-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
               <CardHeader className="pb-2 pt-5">
                 <CardTitle className="text-blue-600 dark:text-blue-400 text-lg font-bold">{t('advantages.title')}</CardTitle>
