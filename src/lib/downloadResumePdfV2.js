@@ -8,14 +8,14 @@ import { showMessage } from './message.js'
  * 缺点：需要用户手动选择"另存为 PDF"
  */
 export async function downloadResumePdfViaPrint(lang = "zh") {
+  // 在函数开始时保存原始标题，确保无论成功或失败都能正确恢复
+  const originalTitle = document.title;
+  
   try {
     // 获取文件名（去掉 .pdf 扩展名，因为浏览器会自动添加）
     const filename = (dict["resume.filename"] && dict["resume.filename"][lang])
       ? dict["resume.filename"][lang].replace(/\.pdf$/i, '')
       : (lang === "zh" ? "张芳朝-全栈偏前端-9年工作经验" : "Zhang-Fangchao-Full-Stack-Frontend-leaning-9-Years-Experience");
-    
-    // 保存原始标题
-    const originalTitle = document.title;
     
     // 临时修改页面标题为文件名，这样打印对话框可能会使用这个名称
     document.title = filename;
@@ -34,17 +34,8 @@ export async function downloadResumePdfViaPrint(lang = "zh") {
     setTimeout(() => {
       document.title = originalTitle;
     }, 1000);
-    
-    // 显示提示信息
-    // showMessage(
-    //   lang === 'zh' 
-    //     ? '请在打印对话框中选择"另存为 PDF"来下载简历' 
-    //     : 'Please select "Save as PDF" in the print dialog to download resume',
-    //   5000
-    // );
   } catch (err) {
     // 确保恢复标题
-    const originalTitle = document.title;
     setTimeout(() => {
       document.title = originalTitle;
     }, 100);
