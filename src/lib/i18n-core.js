@@ -53,8 +53,8 @@ export const dict = {
     en: "9 years in frontend development + 4 years in team leadership",
   },
   "advantages.value.stack": {
-    zh: "React、Vue、Three.js、Nest.js、TypeScript、Vite、Rollup",
-    en: "React, Vue, Three.js, Nest.js, TypeScript, Vite, Rollup",
+    zh: "React、Vue、Three.js、Next.js、Nest.js、TypeScript、Vite、Rollup",
+    en: "React, Vue, Three.js, Next.js, Nest.js, TypeScript, Vite, Rollup",
   },
   "advantages.value.focus": {
     zh: "三维可视化、中后台重构、性能优化",
@@ -69,8 +69,8 @@ export const dict = {
   "hero.learn": { zh: "了解更多", en: "Learn More" },
   "hero.contact": { zh: "联系我", en: "Contact Me" },
   "hero.desc": {
-    zh: "【专业经验】：9 年前端开发 + 4 年团队管理\n【技术体系】：React、Vue、Three.js、Nest.js、TypeScript、Vite、Rollup\n【特色领域】：三维可视化、中后台重构、性能优化\n【结果导向】：主导多个核心项目落地，提升业务效率与用户体验",
-    en: "Professional Experience: 9 years in frontend · 4 years in team leadership\nTech Stack: React, Vue, Three.js, Nest.js, TypeScript, Vite, Rollup\nFocus Areas: 3D visualization, admin‑system refactoring, performance optimization\nOutcome‑Driven: Led multiple core projects; improved business efficiency and user experience",
+    zh: "【专业经验】：9 年前端开发 + 4 年团队管理\n【技术体系】：React、Vue、Three.js、Next.js、Nest.js、TypeScript、Vite、Rollup\n【特色领域】：三维可视化、中后台重构、性能优化\n【结果导向】：主导多个核心项目落地，提升业务效率与用户体验",
+    en: "Professional Experience: 9 years in frontend · 4 years in team leadership\nTech Stack: React, Vue, Three.js, Next.js, Nest.js, TypeScript, Vite, Rollup\nFocus Areas: 3D visualization, admin‑system refactoring, performance optimization\nOutcome‑Driven: Led multiple core projects; improved business efficiency and user experience",
   },
 
   "skills.title": { zh: "核心技能", en: "Core Skills" },

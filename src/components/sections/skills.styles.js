@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 // 边框颜色（亮色主题更浅，暗色主题更深）
 const BORDER_COLORS = {
   React: "border-blue-400 dark:border-blue-600",
+  "Next.js": "border-slate-400 dark:border-slate-500",
   Vue: "border-green-400 dark:border-green-600",
   TypeScript: "border-purple-400 dark:border-purple-700",
   "微信小程序": "border-amber-400 dark:border-amber-600",
@@ -18,6 +19,7 @@ const BORDER_COLORS = {
 // 文字颜色（亮色主题更深，暗色主题更浅）
 const TEXT_COLORS = {
   React: "text-blue-600 dark:text-blue-300",
+  "Next.js": "text-slate-700 dark:text-slate-200",
   Vue: "text-green-600 dark:text-green-300",
   TypeScript: "text-purple-600 dark:text-purple-300",
   "微信小程序": "text-amber-600 dark:text-amber-300",
@@ -33,6 +35,7 @@ const TEXT_COLORS = {
 // 底色：亮色为柔和填充（图一），暗色为带色半透明（图二）
 const BG_COLORS = {
   React: "bg-blue-100 dark:bg-blue-900/30",
+  "Next.js": "bg-slate-100 dark:bg-slate-800/40",
   Vue: "bg-green-100 dark:bg-emerald-900/30",
   TypeScript: "bg-purple-100 dark:bg-purple-900/30",
   "微信小程序": "bg-amber-100 dark:bg-amber-900/30",

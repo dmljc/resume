@@ -4,6 +4,7 @@ export const skills = [
     descKey: "skills.frontend.desc",
     tags: [
       "React",
+      "Next.js",
       "Vue",
       "TypeScript",
       { zh: "微信小程序", en: "WeChat Mini Programs" },
